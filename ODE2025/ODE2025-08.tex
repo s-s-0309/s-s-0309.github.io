@@ -1,0 +1,104 @@
+\section{Bernoulliの方程式・Riccatiの方程式} %第8回
+\subsection{Bernoulliの方程式}
+次のような方程式を考えよう：
+\begin{equation}
+    y' + P(x)y = Q(x)y^{\alpha}. \label{eq:ast-ber}
+\end{equation}
+$\alpha=0$ならば，\eqref{eq:ast-ber}は非同次線形方程式である．一方$\alpha = 1$ならば$y'+(P(x)-Q(x))y=0$となり，これは同次線形方程式である．以後，$\alpha \neq 0, 1$としよう．
+
+ここで，$\bm{z(x)=y(x)^{1-\alpha}}$と変換すると$z'(x)=(1-\alpha)y^{-\alpha}y'$であるから，\eqref{eq:ast-ber}について両辺$y^{\alpha}$で割ると
+\[ \frac{y'}{y^{\alpha}} + P(x)y^{1-\alpha} = Q(x)\]
+となる．したがって
+\begin{align*}
+    \frac{z'(x)}{1-\alpha} + P(x)z(x) &= Q(x) \\
+    \ie \quad z'(x) + (1-\alpha)P(x)z(x) &= (1-\alpha)Q(x).
+\end{align*}
+よって，非同次の線形方程式となるから，これは解ける（$\alpha=0$のときに帰着）．
+
+\begin{example} \label{example:ber}
+    $\displaystyle y'+\frac{y}{x} = x^2y^3$を解く．$P(x) = 1/x, \; Q(x) = x^2, \; \alpha=3$といえる．では，$z(x) \coloneqq y{1-3} = y^{-2}$となる．$z'=-2y^{-3}y'$であり，考えている方程式について両辺$y^3$で割ると
+    \begin{align*}
+        \frac{y'}{y^3} + \frac{1}{x}y^{-2} &= x^2 \\
+        \quad -\frac{1}{2}z' + \frac{1}{x}z &= x^2 \\
+        \ie \quad z'-\frac{z}{x} &= -2x^2 \tag{eq:ast-section8}
+    \end{align*}
+    を得る．ではこれを解こう．$z'-z/x= 0$の解を求めてから\eqref{eq:ast-section8}の解を求めようとするとしんどいと思われるので，適当な積分因子をかけることにより面倒さ（？）を回避しよう．
+
+    両辺に$x^{-2}$をかけると，以下のようになる：
+    \begin{align*}
+        \frac{1}{x^2}z' - \frac{2}{x^3}z &= -2 \\
+        \frac{d}{dx}\left(\frac{1}{x^2}z\right) &= -2 \\
+    \end{align*}
+    より
+    \begin{align*}
+        \frac{1}{x^2}z &= -2x + c \\
+        z &= -2x^3+cx^2 \\
+        \frac{1}{y^2} &=  -2x^3+cx^2 \\
+        \therefore \quad y^2(-2x^3+cx^2) &= 1.
+    \end{align*}
+    ちなみに，$y \equiv 0$も解である．
+\end{example}
+
+\begin{homework*}[任意]
+    次の手順で例\ref{example:ber}を解け．
+    \begin{enumerate}
+        \item $z'-z/x= 0$の解を求めよ．
+        \item $z'-z/x = -2x^2$の解を求めよ．
+    \end{enumerate}
+\end{homework*}
+
+\begin{remark}
+    Bernoulliの方程式において，$\alpha>0$のときは$y'+P(x)y=Q(x)y^{\alpha}$について，$y \equiv 0$も解となっている．
+\end{remark}
+
+\subsection{Riccatiの方程式}
+次のような方程式を考えよう：
+\begin{equation}
+    y'(x) + P(x) + Q(x)y(x) + R(x)y^2 = 0. \label{eq:riccati}
+\end{equation}
+$R(x) \equiv 0$ならば，\eqref{eq:riccati}は線形微分方程式である．一方，$P(x) \equiv 0$ならば，$\alpha=2$のBernoulli型である．
+
+さて，\eqref{eq:riccati}は一般には解きにくい．幸いなことに，1つの解$y_0$がわかると，一般解を記述できる．
+
+$y_0$を\eqref{eq:riccati}の解とすると，次がなりたつ：
+\[ {y_0}' + P(x) + Q(x)y_0 + R(x){y_0}^2 = 0. \label{eq:riccati-y_0} \]
+\eqref{eq:riccati}$-$\eqref{eq:riccati-y_0}を実行すると
+\begin{align*}
+    (y-y_0)' + (P(x)-P(x)) + Q(x)(y-y_0) + R(x)(y^2-{y_0}^2) &= 0 \\
+    \ie \quad (y-y_0)' + Q(x)(y-y_0) + R(x)(y^2-{y_0}^2) &= 0.
+\end{align*}
+$y^2-{y_0}^2$について，こいつを上手く変形すれば，Bernoulliの方程式に帰着できそうである．実際，次のように変形すれば達成される：
+\begin{align*}
+    y^2-{y_0}^2 &= (y-y_0)^2 + 2yy_0 - {y_0}^2-y^2 \\
+    &= (y-y_0)^2 +  2y_0(y-y_0).
+\end{align*}
+$u(x) \coloneqq y-y_0$とおくと
+\begin{align*}
+    u'(x) + Q(x)u(x) + R(x)(u^2(x)+2y_0u(x)) &= 0 \\
+    \therefore \quad u'(x) + (Q(x)+2y_0)u(x) + R(x)u^2(x) &= 0.
+\end{align*}
+これはBernoulli型の方程式！
+
+\begin{example}
+    $y'+(2x-1)y-(x-1)y^2=x$を解く．まず$y \equiv 1$が解であることがわかる（直接代入して確認せよ）．
+    
+    $u(x) \coloneqq y-1$とおくと$y=u(x)+1$．$y'=u'$と合わせて次を得る：
+    \begin{align*}
+        u'(x) + (2x-1)(u+1) - (x-1)(u'+1) &= x \\
+        \ie \quad u'(x) L+ u(x) = (x-1)u^2.
+    \end{align*}
+    これは$\alpha=2$のBernoulli方程式であり，$\alpha>0$より，$y \equiv 0$は解の1つである．
+
+    $u'(x) L+ u(x) = (x-1)u^2$を解こう．$z \coloneqq u^{1-2}=u^{-1}$とおく．$z'=-u^{-2}u'$であり，両辺$u^{-2}$をかけると
+    \begin{align*}
+        \frac{u'}{u^2} + u^{-1} &= x-1 \\
+        \therefore \quad -z' + z &= x-1.
+    \end{align*}
+    これ以降は各自の宿題とする（授業では演習として各自が解いた記憶がある．なのでみんなも計算しよう）．
+\end{example}
+
+\begin{homework*}
+    好きな方法でよいから，$u'(x) + u(x) = (x-1)u^2$を解け．
+
+    答えは$y=\frac{1}{xe^{-x}+c}+1, \; y \equiv 0, \; 1$である．
+\end{homework*}

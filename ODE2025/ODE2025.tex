@@ -1,0 +1,209 @@
+\documentclass[dvipdfmx,a4,11pt]{jsarticle}
+\pagestyle{headings}
+
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{braket}
+
+\usepackage{framed}
+\setlength{\topsep}{1pt} %framed環境の空白調整
+
+\usepackage{enumitem}
+\usepackage{comment}
+
+\usepackage[bookmarks=true,bookmarksnumbered,hidelinks,colorlinks]{hyperref}
+\usepackage{pxjahyper}
+
+%sectionを明朝体にする
+\usepackage{titlesec}
+\titleformat*{\section}{\normalfont\Large\bfseries} % 明朝体・太字
+\titleformat*{\subsection}{\normalfont\large\bfseries}
+\titleformat*{\subsubsection}{\normalfont\bfseries}
+
+\usepackage{tocloft}
+%目次のセクションフォントを明朝体（normalfont）に変更
+%\renewcommand{\cftsecfont}{\normalfont}
+%\renewcommand{\cftsubsecfont}{\normalfont}
+%\renewcommand{\cftsubsubsecfont}{\bfseries\normalfont}
+
+% 目次内の太字を解除（太字が嫌な場合）
+%\renewcommand{\cftsecpagefont}{\normalfont}
+%\renewcommand{\cftsubsecpagefont}{\normalfont}
+
+
+
+%%%------定理環境------%%%
+\theoremstyle{definition}
+\newtheorem{mydefinition}{定義}[section]
+\newtheorem{mytheorem}[mydefinition]{定理}
+\newtheorem{myproposition}[mydefinition]{命題}
+\newtheorem{mylemma}[mydefinition]{補題}
+\newtheorem{mycornally}[mydefinition]{系}
+\newtheorem{myexample}[mydefinition]{例}
+\newtheorem{attention}{注意}
+\newtheorem{remind}{Remind}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem*{myclaim*}{Claim}
+\newtheorem*{myquestion*}{Question}
+\newtheorem*{mynote*}{Note}
+\newtheorem*{mytalk*}{Talk}
+
+\newtheorem*{homework*}{homework}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\renewcommand{\proofname}{\textbf{【証明】}}
+
+\newenvironment{definition}{\begin{mydefinition}}{\hfill $\square$ \end{mydefinition}}
+\newenvironment{theorem}{\begin{mytheorem}}{\hfill $\square$ \end{mytheorem}}
+\newenvironment{proposition}{\begin{myproposition}}{\hfill $\square$ \end{myproposition}}
+\newenvironment{lemma}{\begin{mylemma}}{\hfill $\square$ \end{mylemma}}
+\newenvironment{cornally}{\begin{mycornally}}{\hfill $\square$ \end{mycornally}}
+\newenvironment{example}{\begin{myexample}}{\hfill $\square$ \end{myexample}}
+\newenvironment{claim*}{\begin{myclaim*}}{\hfill $\square$ \end{myclaim*}}
+\newenvironment{question*}{\begin{myquestion*}}{\hfill $\square$ \end{myquestion*}}
+\newenvironment{note*}{\begin{leftbar}\begin{mynote*}}{\end{mynote*}\end{leftbar}}
+\newenvironment{talk*}{\begin{leftbar}\begin{mytalk*}}{\end{mytalk*}\end{leftbar}}
+
+\numberwithin{equation}{section}
+
+%%%------コマンド（数式）------%%%
+\newcommand{\st}{\text{s.t.}} %such that
+\newcommand{\ie}{\text{i.e.}}
+
+\newcommand{\defiff}{\overset{\mathrm{def}}{\iff}} %定義（同値記号）
+\newcommand{\defeq}{\overset{\mathrm{def}}{=}} %定義（イコール）
+\newcommand{\beceq}[1]{\overset{#1}{=}}
+\newcommand{\inprod}[2]{\Braket{#1,#2}} %内積<a,b>
+\newcommand{\aew}[1]{#1\text{-a.e.}}
+
+
+%%%------コマンド（その他）------%%%
+\newcommand{\checking}{\noindent \fbox{確認}}
+
+
+%%%------演算子------%%%
+\DeclareMathOperator{\tr}{\mathrm{tr}} %trace
+\DeclareMathOperator{\grad}{\mathrm{grad}} %gradien
+\DeclareMathOperator{\diver}{\mathrm{div}} %divergence
+\DeclareMathOperator{\re}{\mathrm{Re}} %Real part
+\DeclareMathOperator{\im}{\mathrm{Im}} %Imaginary part
+\DeclareMathOperator{\rank}{\mathrm{rank}} %rank
+
+
+
+%%%------タイトル------%%%
+\title{{\Large 2025年 前期} \\ 解析学2（常微分方程式論）}
+\author{講義担当者：中川和重 \\ 
+講義ノート作成者：斎藤尚}
+\date{最終更新日：\today}
+
+
+\setcounter{section}{-1} %section0からスタート
+\begin{document}
+\maketitle
+\tableofcontents
+
+\clearpage
+
+%%%------本題------%%%
+\section{はじめに}
+\subsection{参考書}
+中川先生は「図書館で良い本に出会ってね（にっこり）」といっていて，確かにそれはその通りなのだが，何を選べばいいのかよくわからない学生もいるはずだ．そういう人のために，個人的これはよいだろうというものを以下に挙げる：
+\begin{enumerate}[label=\lbrack\arabic*\rbrack]
+    \item 高橋陽一郎，力学と微分方程式，岩波書店．\label{book:takahashi}
+    \item 柳田英二・栄伸一郎，常微分方程式論，朝倉書店．\label{book:yanagida}
+    \item 工学系の何か．
+\end{enumerate}
+先生に確認はしていないが，おそらく授業のおおかたは(2)を参考にしていると思われる．そう主張するのは，第15回で扱った例題が，その本に丸々載っていたからである．
+
+\subsection{記法}
+本講義ノートでは以下のような記号を用いる．
+\begin{itemize}
+    \item $\mathbb{N},\; \mathbb{Z},\; \mathbb{Q},\; \mathbb{R},\; \mathbb{C}$：左から順に，自然数，整数，有理数，実数，複素数を表す．
+    \item Note：定義や定理への補足をNoteに記す．
+    \item Talk：数学に関連した小話または本当に関係のない話はここに記す．
+    \item $\st$：such thatの略である．
+    \item $\ie$：id estの略である．
+\end{itemize}
+
+
+\clearpage
+\section{ガイダンス} %第1回
+すぐ終わった．
+\begin{talk*}[中川先生の授業って...]
+    中川先生の担当する授業の初回は，大体10分とか15分で終わる．初回からぶっぱなせばいいのにと，複素関数論とこの授業を履修していて思うのだが，そうしないのはなにかこだわりがあるのか，はたまた面倒なのかどっちなのか．
+
+    以前，大学院生のTAと話していたのを盗み聞きしたことがある．そのとき「最初の方でゆったりやるから後半つめつめなんだよねー」的なことをぼやいていた．初回からぶっぱなす先生をわたしはみたい．
+\end{talk*}
+
+
+\clearpage
+%第2回
+\input{ODE2025-02_0416}
+
+
+\clearpage
+\section{オンライン課題} %第3回
+人工モデルに関して，エクセルで実験．
+
+
+\clearpage
+%第4回
+\input{ODE2025-04}
+
+
+\clearpage
+%第5回
+\input{ODE2025-05}
+
+
+\clearpage
+%第6回
+\input{ODE2025-06}
+
+
+\clearpage
+%第7回
+\input{ODE2025-07}
+
+
+\clearpage
+%第8回
+\input{ODE2025-08}
+
+
+\clearpage
+%第9回
+\input{ODE2025-09}
+
+\clearpage
+%第10回
+\input{ODE2025-10}
+
+\clearpage
+%第11回
+\input{ODE2025-11}
+
+\clearpage
+%第12回
+\input{ODE2025-12}
+
+\clearpage
+%第13回
+\input{ODE2025-13}
+
+\clearpage
+%第14回
+\input{ODE2025-14}
+
+
+\clearpage
+%第15回
+\input{ODE2025-15}
+
+
+
+
+\end{document}

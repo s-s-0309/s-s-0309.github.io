@@ -1,0 +1,108 @@
+\section{線形微分方程式の概説}
+唐突だが，次のような方程式を考えよう：
+\begin{equation}
+    y'_i(x) = \sum_{j=1}^{n} a_{ij}(x)y_j(x) + b_i(x) \quad (j=1,2,\ldots,n).
+\end{equation}
+ここで
+\begin{align*}
+    \bm{y} &= (y_1(x) \; y_2(x) \; \cdots \; y_n(x))^\top, \\
+    A(x) &= (a_{ij}(x))_{1\leq i,j \leq n} \in M(\mathbb{R};n\times n), \\
+    \bm{b}(x) &= (b_1(x) \; b_2(x) \; \cdots \; b_n(x))^\top
+\end{align*}
+である．$M(\mathbb{R};n\times n)$は実$n$次正方行列の集合である．このとき，方程式は以下のようにかける：
+\begin{equation}
+    \bm{y}' = A(x)\bm{y}(x) + \bm{b}(x). \label{eq:ast-11-1}
+\end{equation}
+
+\begin{claim*}
+    $\mathscr{H} \coloneqq \{\bm{y}(x) : \bm{y}'=A\bm{y}\}$を定める．$\mathscr{H}$は線形空間となる．
+\end{claim*}
+\begin{proof}
+    $\bm{y}_1, \bm{y}_2 \in \mathscr{H}$とする．このとき$\bm{y}_1'=A\bm{y}_1, \; \bm{y}_2'=A\bm{y}_2$である．$(\bm{y}_1+\bm{y}_2)'=\bm{y}_1'+\bm{y}_2'=A\bm{y}_1+A\bm{y}_2=A(\bm{y}_1+\bm{y}_2)$すなわち$\bm{y}_1+\bm{y}_2 \in \mathscr{H}$である．$c \in \mathbb{R}$に対して$(c\bm{y}_1)' = c \bm{y}_1' = c(A\bm{y}_1) = A(c\bm{y}_1)$すなわち$c\bm{y}_1 \in \mathscr{H}$である．
+
+    \eqref{eq:ast-11-1}の同次形の解の集合は，和と定数倍について閉じている．このことから，主張が従う．
+\end{proof}
+
+\eqref{eq:ast-11-1}の左辺について，$\bm{f}(x,\bm{y}) \coloneqq A(x)\bm{y}(x) + \bm{b}(x)$とおく．もし，$A(x), \bm{b}(x)$が連続のとき$\bm{y}_0=\bm{c}$となる解を構成できる（$\because$Picardの逐次近似法）．では，他に解はないのだろうか．それを考えてみよう．
+
+$\bm{y}(x), \bm{z}(x)$が\eqref{eq:ast-11-1}の解とする，すなわち
+\begin{equation}
+    \begin{cases}
+        \bm{y}'(x) = A(x)\bm{y}(x) + \bm{b}(x), \quad \bm{y}(x_0) = \bm{c}, \\
+        \bm{z}'(x) = A(x)\bm{z}(x) + \bm{b}(x), \quad \bm{z}(x_0) = \bm{c}
+    \end{cases}
+\end{equation}
+をみたすとする．示すべきことは$\bm{y}(x) \equiv \bm{z}(x)$である．
+
+$\bm{w}(x) \coloneqq \bm{y}(x) - \bm{z}(x)$とおく．$\bm{w}(x) \equiv \bm{0}$が示されればO.K.である．
+\[ \bm{w}'(x) = (\bm{y}-\bm{z})' = (A\bm{y}+\bm{b})-(A\bm{z}+\bm{b}) = A(\bm{y}-\bm{z}) = A\bm{w}.\]
+さらに，$\bm{y}(x_0)-\bm{z}(x_0) = \bm{c}-\bm{c}=\bm{0}$．よって，$\bm{w}$は$\bm{w}'=A\bm{w}+\bm{b}, \; \bm{w}(x_0)=\bm{0}$をみたす．
+
+ここで，$x>x_0$として積分すると
+\begin{align*}
+    \int_{x_0}^{x} \bm{w}' \; dx &= \bm{w}(x) - \bm{w}(x_0) = \bm{w}, \\
+    \therefore \quad \bm{w}(x) &= \int_{x_0}^{x} A(x)\bm{w}(x) \; dx.
+\end{align*}
+
+以後の議論のため，記号の定義を以下で行う．
+\begin{definition}
+    $\bm{a}=(a_1 \; a_2 \; \cdots \; a_n)^\top$に対して，$\|\bm{a}\|$を次で定義する：
+    \[ \| \bm{a}\| \coloneqq \left(\sum_{j=1}^{n} {a_j}^2\right)^\frac{1}{2} = \sqrt{\bm{a}\cdot\bm{a}}.\]
+\end{definition}
+
+$A(x)\bm{w}(x)$について整理したい．第$i$行については
+\[ \sum_{j=1}^{n} a_{ij}(x)w_j(x) = 
+\begin{pmatrix}
+    a_{i1} \\ \vdots \\ a_{in} 
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+    w_1(x) \\ \vdots \\ w_n(x)
+\end{pmatrix}\]
+より
+\begin{align*}
+    \| A(x)\bm{w}(x) &= \sum_{i=1}^{n} \left(\sum_{j=1}^{n} a_{ij}(x)w_j(x)\right)^2 = \sum_{i=1}^{n} (\bm{a}_i \cdot \bm{w})^2 \\
+    &\leq \sum_{i=1}^{n} \|\bm{a}_i\|^2 \|\bm{w}\|^2 \quad (?-1)\\
+    &= \|\bm{w}\|^2 \sum_{i=1}^{n} \| \bm{a}_i\|^2.
+\end{align*}
+ここで，$\bm{a}_i$は行列$A$の第$i$行の成分を縦に並べたベクトルである．
+
+$(?-1)$の不等式評価がどうしてなりたつのかわからない人がいるかもしれないので説明する，これは\textbf{Cauchy-Schwarzの不等式}と呼ばれるものである．主張は以下の通り：
+\begin{theorem}[Cauchy-Schwarzの不等式]
+    $\bm{x}, \bm{y} \in \mathbb{R}^n$について，次の不等式がなりたつ：
+    \[ |\bm{x} \cdot \bm{y}| \leq \| \bm{x}\| \| \bm{y}\|.\]
+    ここで，$\bm{x} \cdot \bm{y}$は$\bm{x}$と$\bm{y}$の内積，$\|\bm{x}\|$は$\bm{x}$のノルムを表す．
+\end{theorem}
+
+\begin{talk*}[Cauchy-Schwarzの不等式に関する小話]
+    Cauchy-Schwarzの不等式は大学受験数学においても出現する．例えば，$x^2+y^2=1 \; (x,y \in \mathbb{R})$という条件のもとで，$3x+4y$の最大値と最小値を求める問題で威力を発揮する．Cauchy-Schwarzの不等式から
+    \[ -\sqrt{x^2+y^2}\sqrt{3^2+ 4^2} \leq 3x+4y \leq \sqrt{x^2+y^2}\sqrt{3^2+ 4^2}\]
+    が従う．したがって，最大値は5，最小値は$-5$となる．この他にも，$x=\cos \theta, \; y=\sin \theta$を置換して三角関数の最大最小に帰着させて解く方法など，いろいろある．
+\end{talk*}
+
+さて，$\sum_{i=1}^{n} \| \bm{a}_i\|^2$について，$A(x)$は連続より，各係数の最大値と最小値が存在する（これは，有界閉区間で定義された実数値関数については，最大最小が存在するという事実に由来する）．$M ^2 \coloneqq \max_{x_0 \leq t \leq x} \sum_{i=1}^{n} \|\bm{a}_i\|^2$とおくと，$x_0<t<x$について
+\[ \|A(x)\bm{w}(x)\| \leq M\|\bm{w}\|\]
+が従う．
+\begin{align*}
+    \|\bm{w}(x)\| &= \|\int_{x_0}^{x} A(x)\bm{w}(x) \; dx\| \\
+    &\leq \int_{x_0}^{x} \|A(x)\bm{w}(x)\| \; dx \\
+    &\leq M \int_{x_0}^{x} \|\bm{w}(x)\| \; dx.
+\end{align*}
+$K(x) \coloneqq \int_{x_0}^{x} \|\bm{w}(t)\| \; dt$とおくと
+\[ \frac{d}{dt}K(x) = \|\bm{w}(x)\| - \|\bm{w}_0\| = \|\bm{w}(x)\|.\]
+上式がなりたつのは，微分積分学の基本定理からわかる．よって，$dK/dt \leq MK(x)$となり，$K(x_0)=0$である．
+
+$DK/dt - MK(x) \leq 0$について，両辺$e^{-Mx}$をかけると
+\[ 0 \leq e^{-Mx}\frac{dK}{dt} - e^{-Mx}MK(x) = (e^{-Mx}K)'\]
+となるから，$x_0$から$x$で積分すると
+\begin{align*}
+    0 \leq int_{x_0}^{x} (e^{-Mx}K)' \; dx &= e^{-Mx}K - e^{-Mx_0}K(x_0) \\
+    &= e^{-Mx}K.
+\end{align*}
+一方で，$K(x)=\int_{x_0}^x \|\bm{w}(x)\| \; dx \leq 0 \quad (\because \|\bm{w}\| \leq 0).$
+
+以上より，$0 \leq e^{-Mx}K(x) \leq 0$を得る．よって，$K(x) \equiv 0$となり$\bm{w}(x) \equiv 0 \; (x \in [x_0,x])$が従う．つまり$\bm{y} \equiv \bm{z}$となる．
+
+\begin{theorem}
+    $A(x),\; \bm{b}(x)$が連続であるとする．初期条件$\bm{y}_0=\bm{c}$をみたす解は唯1つ存在する．
+\end{theorem}

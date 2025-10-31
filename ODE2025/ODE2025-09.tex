@@ -1,0 +1,116 @@
+\section{完全微分方程式} %第9回
+次のような方程式を考えよう：
+\begin{equation}
+    P(x,y) + Q(x,y)y' = 0. \label{eq:perfect-ode}
+\end{equation}
+ただし，$P,\;Q$は$x,y$の2変数関数で既知とする．$y'=dy/dx$であったから，形式的には次のようにも捉えられる：
+\begin{equation}
+    P(x,y) \; dx + Q(x,y) \; dy = 0. \label{eq:perfect-ode-2}
+\end{equation}
+
+左辺が，ある2変数関数$u(x,y)$の全微分
+\[ du = \frac{\partial }{\partial x}dx + \frac{\partial }{\partial y}dy \]
+と表現されたとき，\eqref{eq:perfect-ode}または\eqref{eq:perfect-ode-2}を\textbf{完全微分方程式}という．いま，$du \equiv 0$の解は$u(x,y) \equiv C$となる．ここで，$C$は定数である．
+
+さて質問．
+\begin{question*}
+    $u(x,y) \equiv C$の解は，\eqref{eq:perfect-ode}または\eqref{eq:perfect-ode-2}をみたすだろうか．
+\end{question*}
+\begin{proof}[\textbf{答え}]
+    正解は\textbf{かける}．実際，以下のようにしてわかる．
+
+    $u(x,y) \equiv C$をみたす$y$は$y=f(x)$とかけたとする．つまり，$u(x,f(x))=0$がなりたつ．両辺を$x$で微分すると
+    \begin{align*}
+        \frac{\partial u}{\partial x} \frac{\partial x}{\partial x} + \frac{\partial y}{\partial y} \frac{\partial y}{\partial x} &= 0 \\
+        \ie \quad u_x + u_y y' &= 0.
+    \end{align*}
+\end{proof}
+
+\begin{theorem}
+    $P(x,y), \; Q(x,y)$は微分できるとする．このとき，次の(1),(2)は同値：
+    \begin{enumerate}
+        \item \eqref{eq:perfect-ode}は完全微分方程式である．
+        \item $\partial P/\partial y = \partial Q/\partial x.$
+    \end{enumerate}
+    さらに，完全形であるとき，解は次のように表される：
+    \[ \int_{x_0}^{x} P(x,y) \; dx + \int_{y_0}^{y} Q(\textcolor{red}{x_0}, y) \; dy.\]
+\end{theorem}
+\begin{proof}
+    ($\Rightarrow$) 完全形$\partial u/\partial x = P(x,y), \; \partial u/\partial y = Q(x,y)$である．それぞれ$y,x$で偏微分すると
+    \[ \frac{\partial^2 u}{\partial y \partial x} = \frac{\partial P}{\partial y}, \quad \frac{\partial^2 u}{\partial x \partial y} = \frac{\partial Q}{\partial x}\]
+    より，$\partial P/\partial y = \partial Q/\partial x$である．
+
+    ($\Leftarrow$) $u(x,y) = \int_{x_0}^{x} P(x,y) \; dx + \int_{y_0}^{y} Q(x_0,y) \; dy$とおく．微分積分学の基本定理より
+    \[ \frac{\partial u}{\partial x} = \frac{\partial}{\partial x} \int_{x_0}^{x} P(x,y) \; dx = P(x,y).\]
+    同様にして
+    \begin{align*}
+        \frac{\partial u}{\partial y} &= \frac{\partial}{\partial y} + Q(x_0,y) \\
+        &= \int_{x_0}^{x} \frac{\partial P}{\partial y} \; dx + Q(x_0,y) \\
+        &= \int_{x_0}^{x} \frac{\partial Q}{\partial x} \; dx + Q(x_0,y) \\
+        &= \left[Q(x,y)\right]_{x_0}^x + Q(x_0,y) = Q(x,y).
+    \end{align*}
+    よって，$\partial P/\partial y = \partial Q/\partial x$となり，示された．
+\end{proof}
+
+今用意した$u$について，$u \equiv c$が解，すなわち
+\[ \int_{x_0}^{x} P(x,y) \; dx + \int_{y_0}^{y} Q(\textcolor{red}{x_0}, y) \; dy = c\]
+は解となる．
+
+\begin{example}
+    $y' = (x - y\cos x)/\sin x$を考える．この式は
+    \[ (x - y\cos x) \; dx + (-\sin x) \; dy = 0\]
+    と形式的に変形できる．$P(x,y)=x - y\cos x, \; Q(x,y)=-\sin x$であるから，$\partial P/\partial y = -\cos x, \; \partial Q/\partial x = -\cos x$であるから，これは完全微分方程式である．
+
+    したがって解は$\int_{x_0}^{x} (x-y\cos x) \; dx + \int_{y_0}^{y} (-\sin x_0) \; dy = c$となる．特に，$x_0=y_0=0$となると
+    \[ \int_0^x (x-y\cos x) \; dx = \frac{x^2}{2} - y\sin x = c\]
+    が解となる．
+\end{example}
+
+\begin{example}
+    $(2x-2y+3) \; dx + (-2x+4y+1) \; dy = 0$を解く．
+
+    $P(x,y) \coloneqq 2x-2y+3, \; Q(x,y) \coloneqq -2x+4y+1$とおくと，$\partial P/\partial y = -2, \; \partial Q/\partial x = -2$であるから，これは完全形である．
+\end{example}
+\begin{homework*}
+    上の例の解を求めよ．
+\end{homework*}
+
+今まで紹介した例では，たまたま微分方程式が完全形となったが，そうではないことももちろんある．しかし，そのようなときでも，適切な関数$\lambda(x,y)$をかけて
+\[ \lambda(x,y)P(x,y) + \lambda(x,y)Q(x,y)y' = 0\]
+が完全形となることがある．このとき，$\lambda$を\textbf{積分因子}という．
+
+\begin{example}[$1/y^2$をかける]
+    $y-xy'=0$を考える（これは変数分離形，同次形，線形でもある）．$P(x,y) \coloneqq y, \; Q(x,y) \coloneqq -x$とおく．$\partial P/\partial y \neq \partial Q/\partial x$であるから，これは完全形ではない．
+
+    さて，両辺に$y^{-2}$をかけよう．
+    \[ \frac{1}{y^2}(y \; dx - x \; dy) = \frac{1}{y} \; dx - \frac{x}{y} \; dy = du.\]
+    ここで，$u \coloneqq y/x$とおいた．上式は$u$の全微分であることに注意しよう．したがって，$x=cy$が解である．
+\end{example}
+
+\begin{example}[$1/xy$をかける]
+    両辺に$1/xy$をかけよう．
+    \[ \frac{1}{xy}(y \; dx - x \; dy) = \frac{1}{x} \; dx - \frac{1}{y} \; dy = d\left(\log|\frac{y}{x}|\right).\]
+    したがって，$\log|y/x|=c$が解である．
+\end{example}
+
+積分因子として$1/y^2$をかけようが$1/xy$をかけようが，得られた結果は変わらない．\textbf{積分因子は1つに決まらないのだ}．一般に，次のことが知られている．
+
+\begin{remark}
+    1階の常微分方程式では，積分因子が存在することが知られている．
+\end{remark}
+
+\begin{example} \label{example:homework-10-1}
+    $xy^2-y^3+(1-xy^2)y'=0$を考える．解を求めるまでは，宿題とする．
+\end{example}
+
+\begin{homework*}
+    次の手順にしたがって，例\ref{example:homework-10-1}を解け．$P(x,y) \coloneqq xy^2-y^3, \; Q(x,y) \coloneqq 1-xy^2$とする．
+    \begin{enumerate}
+        \item 完全微分方程式ではないことを示せ．
+        \item $\lambda(x,y) \coloneqq x^my^m, \tilde{P}(x,y) \coloneqq (xy^2-y^3)P(x,y), \tilde{Q}(x,y) \coloneqq (1-xy^2)Q(x,y)$とおく．このとき$\partial \tilde{P}/\partial y, \; \partial \tilde{Q}/\partial x$を求めよ．
+        \item $\tilde{P}(x,y),\tilde{Q}(x,y)$を踏まえて，完全系であるための必要十分条件を述べよ．
+        \item 積分因子$\lambda(x,y)$を求めよ．
+    \end{enumerate}
+\end{homework*}
+
+

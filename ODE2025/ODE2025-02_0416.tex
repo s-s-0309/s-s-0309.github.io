@@ -1,0 +1,18 @@
+\section{放射性崩壊と数理モデル} %第2回
+\subsection{1階微分方程式}
+放射性崩壊の法則は「放射性物質の崩壊速度は，そのとき存在する物質量に比例する」ということを主張する．これは微分方程式で表せば，以下のように記述される：
+\begin{equation}
+    \frac{dN}{dt} = -\lambda N.
+\end{equation}
+
+$N(t)$を時刻$t$における原子数，$N(t+\Delta t)$を時刻$t+\Delta t$における原子数とする．このとき，$N(t)-N(t+\Delta t)$は$\Delta t$の時間で減少した原子数を意味する．一方で，法則より，この数は$\lambda N(t)\Delta t$とかける．したがって以下を得る：
+\begin{align*}
+    N(t)-N(t+\Delta t) &= \lambda N(t)\Delta t \\
+    \frac{N(t+\Delta t)-N(t)}{\Delta t} &= -\lambda N(t).
+\end{align*}
+$\Delta t \to 0$とすると，$Dn/dt =-\lambda N$となる（cf: E.\;Ruthorford et al. (1903) \footnote{Ruthorfordは「ラザフォード」とよむ，}）
+
+ここで質問をしよう．$dN/dt = -\lambda N$はどう解けばよいのだろうか．答えは以下の通り：
+\begin{proof}[\textbf{答え}]
+    $\frac{1}{N} \; dN = -\lambda \; dt$であるから，両辺を積分して$\log|N| = -\lambda t + C$．したがって$N = Ae^{-\lambda t}$となる．ここで$A \coloneqq e^{\pm C}$とおいた．
+\end{proof}

@@ -1,0 +1,179 @@
+\section{微分演算子（その1）}
+次のような定数係数の線形微分方程式を考えよう：
+\begin{align}
+    y^{(n)}(x) + a_1y^{(n-1)}(x) + \cdots +a_{n-1}y' + a_ny(x) &= f(x), \label{eq:I-13} \\
+    y^{(n)}(x) + a_1y^{(n-1)}(x) + \cdots +a_{n-1}y' + a_ny(x) &= 0. \label{eq:H-13}
+\end{align}
+ただし，$y$は未知関数，$f(x)$は既知であるとする．
+
+ここで，$y' = \frac{d}{dx}y$を次のように書く：
+\[ y' \coloneqq Dy \quad \ie D \coloneqq \frac{d}{dx}.\]
+2階微分，3階微分，$k$階微分については以下のように書く：:
+\[ \frac{d^2}{dx^2} = D^2, \; \frac{d^3}{dx^3} = D^3, \; \cdots, \; \frac{d^n}{dx^n} = D^n.\]
+
+これを踏まえると，\eqref{eq:I-13}は次のように書くことができる：
+\[ (D^n+a_1D^{n-1}+\cdots+a_{n-1}D+a_n)y = f(x).\]
+この$D$を\textbf{微分演算子}とよぶ．
+
+\begin{example}
+    $a,b$を定数として，$(D-a)(D-b)y$を計算しよう．
+    \begin{align*}
+        (D-a)\{(D-b)y\} &= (D-a)(Dy-by) \\
+        &= D(y'-by) - a(y'-by) \\
+        &= (y''-by') - ay' + aby \\
+        &= y'' -(a+b)y' + aby \\
+        &= (D^2-(a+b)D+ab)y.
+    \end{align*}
+    同様にして$(D-b)(D-a)y=(D^2-(b+a)D+ab)y$が導かれる．
+\end{example}
+
+\begin{remark}
+    $(D-a)$と$(D-b)$の作用の順番は交換可能であり
+    \[ (D-a)(D-b)y = (D-b)(D-a)y = (D^2-(a+b)D+ab)y\]
+    となり，代数的に扱うことができる．
+\end{remark}
+
+微分演算子$D$に対して，ｓの逆演算$D^{-1}$を
+\[ D^{-1} f\coloneqq \int f(x) \; dx\]
+で定義する．
+
+\begin{note*}
+    \begin{align*}
+        D^{-1}(Df) &= f + C, \\
+        D(D^{-1}f) &= f
+    \end{align*}
+    となる．ただし，$C$は定数である．このようにして，$D^{-1}D, DD^{-1}$は少し異なる．ちなみに，$DD^{-1}$を\textbf{恒等演算子}と呼ぶこともある．
+\end{note*}
+
+さて，微分演算子$D$の導入により，我々\eqref{eq:I-13}を
+\[ (D^n+a_1D^{n-1}+\cdots+a_{n-1}D+a_n)y = f(x)\]
+のように書くことに成功した．$L(D) \coloneqq D^n+a_1D^{n-1}+\cdots+a_{n-1}D+a_n$とおこう．\eqref{eq:I-13}は$L(D)=f(x)$のように書き直すことができる．$L(D)^{-1}$が上手に定義できれば，解$y$がわかりそうである．
+
+\begin{example}
+    $D^2y = f$について，$(D^2)^{-1}f \coloneqq \iint f(x) \; dxdx$と定義すればよい．以後，$(D^k)^{-1}$を$D^{-k}$と表すこととする．
+
+    ちなみに，$\iint$は$x$について2回積分してくださいということを意味していて，重積分の意味ではないことに注意されたい．
+\end{example}
+
+\begin{example}
+    $(D-a)y=f$を考える．変形すると$y'-ay=f$となり，これは線形である．両辺に$e^{-ax}$をかけると
+    \begin{align*}
+        e^{-ax}y' -e^{-ax}y &= e^{-ax}f \\
+        (e^{-ax})' &= e^{-ax}f(x).
+    \end{align*}
+    したがって
+    \begin{align*}
+        e^{-ax}y &= \int e^{-ax} f(x) \; dx \\
+        y &= e^{ax} \int ^{-ax} f(x) \; dx.
+    \end{align*}
+    この考察から，我々は$(D-a)^{-1}$を次で定義する：
+    \[ (D-a)^{-1} \coloneqq e^{ax} \int e^{-ax}f(x) \; dx.\]
+\end{example}
+
+\begin{example}
+    $(D-a)^2y = f(x)$を考える．$((D-a)^2)^{-1}f(x)$が知りたい．先ほどの議論より$((D-a)^2)^{-1} = (D-a)^{-2}$とかける．$z(x) \coloneqq (D-a)y$とおくと，$(D-a)z=f(x)$となる．したがって
+    \[ z(x) = e^{ax} \int e^{-ax} z(x) \; dx.\]
+    さらに
+    \begin{align*}
+        y &= (D-a)^{-1} z(x) \\
+        &= e^{ax} \int e^{-ax} z(x) \; dx \\
+        &= e^{ax} \int e^{-ax} \left(e^{ax} \int e^{-ax} f(x) \; dx\right) \; dx \\
+        &= e^{ax} \iint e^{-ax} f(x) \; dx.
+    \end{align*}
+    先ほども述べたが，$\iint$は2重積分の意味ではない．この考察から
+    \[ (D-a)^{-2} \coloneqq e^{ax} \iint e^{-ax} f(x) \; dx\]
+    と定義すればよい．
+
+    同様に，$(D-a)^{-k}y=f$については
+    \[ (D-a)^{-k} \coloneqq e^{ax} \iint \cdots \int e^{-ax} f(x) \; dx\]
+    と定義すればよい．
+\end{example}
+
+\begin{example}
+    $(D-a)(D-b)y=f(x)$を考える．$((D-a)(D-b))^{-1}f$が知りたい．$z(x) \coloneqq (D-b)y$とおくと，$y=(D-b)^{-1}z(x)$となり，$y=(D-b)^{-1}z(x)$を得る．したがって，$y=(D-b)^{-1}(D-a)^{-1}f$となる．よって，次の関係を得る：
+    \[ ((D-a)(D-b))^{-1} = (D-b)^{-1}(D-a)^{-1}.\]
+    一方，$(D-a)(D-b)=(D-b)(D-a)$であるから
+    \[ (D-b)^{-1}(D-a)^{-1} = (D-a)^{-1}(D-b)^{-1}\]
+    となる．
+\end{example}
+
+以上をまとめ，$L(D)$を因数分解すると
+\[ L(\lambda) = (\lambda - \lambda_1)^{n_1} ((\lambda - \lambda_2)^{n_2}) \cdots (\lambda - \lambda_r)^{n_r}\]
+となる．ただし，$n_k$は$\lambda_k$の重複度，$i \neq j$のとき$\lambda_i \neq \lambda_j$，$n_1+n_2+\cdots+n_r=n$とする．このとき，$(D-\lambda_1)^{-n_1} (D-\lambda_2)^{-n_2} \cdots (D-\lambda_r)^{-n_r}f$は$L(D)y=f$という\eqref{eq:I-13}の1つの解となる．$L(D)y=f$の一般解は，基本解の一次結合にこれを加えたものになる．
+
+$L(D)y=0$の基本解は，$(D-\lambda_j)^{-n_j}y=0$をみたすものを探せばよい．このとき，$\lambda_j$つの以下の解がでてくる：
+\[ e^{\lambda_j x}, \; xe^{\lambda_j x}, \; x^2e^{\lambda_j x}, \; \ldots, \; x^{\lambda_j-1}e^{\lambda_j x}.\]
+
+$L(D)y=0$の基本解は，次で表せる：
+\[ y(x) = \sum_{j=1}^{r} \sum_{k}^{n_j-1} C_{jk} x^k e^{\lambda_j x}.\]
+
+\begin{definition}
+    \eqref{eq:I-13}：$L(D)y=f$の一般解は以下で書ける：
+    \[ y = \sum_{j=1}^{r} \sum_{k}^{n_j-1} C_{jk} x^k e^{\lambda_j x} + (D-\lambda_1)^{-n_1} (D-\lambda_2)^{-n_2} \cdots (D-\lambda_r)^{-n_r}f.\]
+    ここで，$(D-\lambda_j)^{-n_j}f$は次のようになる：
+    \[ (D-\lambda_j)^{-n_j}f = e^{\lambda_j x} \iint \cdots \int e^{-\lambda_j x} f(x) \; dx.\]
+\end{definition}
+
+\begin{example}
+    $y'''-y''-y'+y=xe^{2x}$を考える．微分演算子を用いると
+    \[ (D^3-D^2-D+1)y = xe^{2x}\]
+    と書き直せる．ここで，$L(D) \coloneqq D^3-D^2-D+1$とおくと，特性多項式$L(\lambda)$は$L(\lambda)=\lambda^3-\lambda^2+\lambda+1$となる．これを解くと，$\lambda=-1, 1$を得るから，一般解は次のようになる：
+    \[ y(x) = c_1e^{-x} + c_2e^x + c_3xe^x + (D-1)^{-2}(D+1)^{-1}xe^{2x}.\]
+
+    特殊解を求めよう．講義では4つの方法を紹介した．この第13回では，3つの方法を紹介する．
+\end{example}
+
+\begin{description}
+    \item[(1) 定義通りにとく] まず
+    \begin{align*}
+        (D+1)^{-1}xe^{2x} &= e^{-x} \int e^x xe^{2x} \; dx \\
+        &= e^{-x} \int x e^{3x} \; dx \\
+        &= e^{-x} \left[\frac{x}{3}e^{3x}\right] - e^{-x} \int \frac{1}{3}e^{3x} \; dx \\
+        &= \frac{1}{3}xe^{2x} - \frac{1}{9}e^{2x} \\
+        &= \frac{1}{9}(3x-1)e^{2x}.
+    \end{align*}
+    つぎに
+    \begin{align*}
+        (D-1)^{-2}(D+1)^{-1}xe^{2x} &= (D-1)^{-2} \left\{\frac{1}{9}(3x-1)e^{2x}\right\} \\
+        &= \frac{1}{9}e^x \iint e^{-x} (3x-1) e^{2x} \; dxdx \\
+        &= \frac{1}{9}e^x \iint (3x-1)e^x \; dxdx \\
+        &= \frac{1}{9}e^x \left(\int [(3x-1)e^x] - 3\int e^x \; dx \right) \\
+        &= \frac{1}{9}e^x \int (3x-4)e^x \; dx \\
+        &= \frac{1}{9}e^x \left[(3x-4)e^x - 3 \int e^x \; dx\right] \\
+        &= \frac{1}{9}e^x \left[(3x-7)e^x\right] \\
+        &= \frac{1}{9}(3x-7)e^{2x}.
+    \end{align*}
+    よって，$(D-1)^{-2}(D+1)^{-1}xe^{2x} = \frac{1}{9}(3x-7)e^{2x}$を得る．
+
+    これは大変！
+    
+    \item[(2) 推移法則を使う] まず，主張は以下の通りである：
+    \begin{theorem}[推移法則]
+        $\lambda$を定数とするとき，次がなりたつ：
+        \[ L(D)^{-1}(e^{\lambda x}f(x)) = e^{\lambda x} L(D+\lambda)^{-1} f(x).\]
+    \end{theorem}
+    \begin{align*}
+        (D+1)^{-1}xe^{2x} &= e^{2x} L(D+3)^{-1} x \\
+        &= e^{2x} \cdot e^{-3x} \int x e^{3x} \; dx \\
+        &= e^x \left[\frac{1}{3}xe^{3x} - \frac{1}{3}\int e^{3x} \; dx\right] \\
+        &= \frac{1}{9}e^{2x}(3x-1), \\
+        (D-1)^{-2}(D+1)^{-1}xe^{2x} &= (D-1)^{-2} \left(\frac{1}{9}e^{2x}(3x-1)\right) \\
+        &= e^{2x} (D+1)^{-2} \left(\frac{1}{9}(3x-1)\right) \\
+        &= \frac{1}{9}(3x-7)e^{2x}
+    \end{align*}
+    となり，たしかに(1)の結果と一致する．
+
+    \item[(3) 部分分数分解を用いる] $1/L(\lambda)$が次のように変形できたとしよう:
+    \[ \frac{1}{L(\lambda)} = \frac{A_1}{(\lambda-\mu_1)^{n_1}} + \cdots + \frac{A_k}{(\lambda-\mu_k)^{n_k}}.\]
+    $L(D)^{-1} = A_1(\lambda-\mu_1)^{n_1} + \cdots + A_k(\lambda-\mu_k)^{n_k}$となる．
+
+    今回の場合，$L(\lambda)=(\lambda-1)^2(\lambda+1)$だから
+    \[ L(D)^{-1} = \frac{1}{4}(D+1)^{-1} - \frac{1}{4}(D-1)^{-1} + \frac{1}{2}(D-1)^{-2}\]
+    となる．あとは，計算．
+\end{description}
+
+\begin{homework*}
+    省略された計算過程を自力で補え．
+\end{homework*}
+
+次回はMaclaurineの方法を述べる．

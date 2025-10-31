@@ -1,0 +1,59 @@
+\section{一般論パート}
+次の方程式を考えよう：
+\begin{align}
+    \bm{y}'(x) &= A(x)\bm{y}(x) + \bm{b}(x), \label{eq:11-I} \\
+    \bm{y}'(x) &= A(x)\bm{y}(x). \label{eq:11-H}
+\end{align}
+どちらも$A(x),\bm{b}$が連続で，$\bm{y}$が\eqref{eq:11-I}と$\bm{y}(x_0)=\bm{c}$をみたす解は唯1つ存在する．
+
+$\bm{v}_j \coloneqq (0 \; \cdots \; 0 \; 1 \; 0 \; \cdots 0)^\top \; (j=1,2,\ldots,n)$は縦ベクトルで，第$j$成分が1，それ以外が0であるようなものである．これを標準基底と呼ぶ．人によっては，$\bm{v}$ではなく$\bm{e}$を用いる．これを用いると
+\[ \bm{c} = \alpha_1\bm{v}_1 + \cdots + \alpha_n\bm{v}_n\]
+と表せる．
+
+ここで，$\bm{y}_k(x)$を
+\[ \begin{cases}
+    \bm{y}'_k = A\bm{y}_k, \\
+    \bm{y}_k(x_0) = \bm{v}_k
+\end{cases}\]
+と定める．この$\bm{y}_1,\ldots,\bm{y}_n$を用いると
+\[ \bm{y}(x) = \alpha_1\bm{y}_1 + \cdots + \alpha_n\bm{y}_n\]
+とかける．
+
+$Y(x) \coloneqq (\bm{y}_1(x),\ldots,\bm{y}_n(x))$を$n\times n$型行列値関数（成分が関数），$V \coloneqq (\bm{v}_1,\ldots,\bm{v}_n)$を$n\times n$正則関数とする．
+
+$\bm{\alpha} \coloneqq (\alpha_1 \; \cdots \; \alpha_n)^\top$とおく（$\bm{v}_k$が標準規定だと$\bm{\alpha}=\bm{c}$である）．$V$は正則であるから，逆行列をもち$\bm{\alpha}= V^{-1}\bm{c}=Y^{-1}(x_0)\bm{c}$である．よって解は
+\begin{align*}
+    \bm{y}(x) &= \alpha_1\bm{y}_1 + \cdots + \alpha_n\bm{y}_n \\
+    &= (\bm{y}_1 \; \cdots \; \bm{y}_n)
+    \begin{pmatrix}
+        \alpha_1 \\ \vdots \\ \alpha_n
+    \end{pmatrix} \\
+    &= Y(x)\cdot Y^{-1}(x_o)\bm{c}
+\end{align*}
+となる．
+
+\begin{definition}[基本解・レゾルベント]
+    $\bm{y}_1,\ldots,\bm{y}_n$を\textbf{基本解}といい，$R(x,x_0) \coloneqq Y(x)\cdot Y^{-1}(x_0)$を\textbf{レゾルベント}という．
+\end{definition}
+レゾルベントを用いると，解は$bm{y}(x) = R(x,x_0)\bm{c}$となる．
+
+\begin{definition}[ロンスキー行列・ロンスキアン]
+    $n$つの$n$次元ベクトル値関数$\bm{y}_1(x),\ldots,\bm{y}_n(x)$に対して
+    \[ W(x) \coloneqq (\bm{y}_1(x),\ldots,\bm{y}_n(x))\]
+    を\textbf{ロンスキー行列}といい，その行列式すなわち$\det (\bm{y}_1(x),\ldots,\bm{y}_n(x))$を\textbf{ロンスキアン}という．
+\end{definition}
+
+\begin{theorem}[Liouvilleの定理]
+    $\bm{y}_k(x)$は$\bm{y}'_k = A\bm{y}_k$をみたすとする．このとき，以下がなりたつ：
+    \[ W(x) = W(x_0) \exp \left(\int_{x_0}^x \tr A(x) \; dx\right).\]
+\end{theorem}
+一般に$\exp(\cdots) \neq 0$であるから，次のことがいえる：
+\begin{note*}
+    ある$x_0$で$W(x_0) \neq 0.$ $\iff$ $W(x) \neq 0.$
+\end{note*}
+
+$\{\bm{y}_1,\ldots,\bm{y}_n\}$が基本解であるとする．
+\[ Y(x_0) = (\bm{y}_1(x_0) \; \cdots \; \bm{y}_n(x_0)) = (\bm{v}_1 \; \cdots \; \bm{v}_n) = V(x)\]
+であり，$W(x_0) = \det Y(x_0) = \det V \neq 0$とLiouvilleの定理から，$Y(x)$の逆行列は常に存在することがわかる．
+
+\subsection{(H)}

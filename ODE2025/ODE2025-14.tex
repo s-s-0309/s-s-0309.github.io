@@ -1,0 +1,191 @@
+\section{微分演算子（その2）・行列の指数関数（その1）}
+\subsection{Maclaurineの方法}
+次回述べなかったMaclaurineの方法を述べる．
+
+$L(\lambda) = \lambda^p M(\lambda), \; M(\lambda) \neq 0$とする．$M(\lambda)$のMaclaurine展開を用いて$L(\lambda)^{-1}$が
+\[ L(\lambda)^{-1} = \lambda^{-p} (b_0+b_1\lambda+b_2\lambda^2+\cdots)\]
+とかけたとする．そして，$f(x)$が$k$次以下の整式でかけたとする．このとき
+\[ L(D)^{-1}f = (b_0+b_1\lambda+b_2\lambda^2+\cdots+b_kD^k)f(x).\]
+
+前回の例題において，$f(x)=xe^{2x}$であったが，これは明らかに整式ではない．したがって今回の方法が使えないように見える．さて，
+\begin{align*}
+    (D+1)^{-1} xe^{2x} &\beceq{\text{推移法則}} e^{2x} (D+1+2)^{-1} x \\
+    &= e^{2x} (D+3)^{-1}x,
+\end{align*}
+という式に着目しよう．$xe^{2x}$を直接マクローリン展開するのではなく，「$(D+3)^{-1}$」を強引にマクローリン展開するのである．
+
+今，$(\lambda+3)^{-1} = \frac{1}{3}\frac{1}{1+\lambda/3} = \frac{1}{3}(1-\frac{\lambda}{3}+(\frac{\lambda}{3})^2 + \cdots)$となるから
+\begin{align*}
+    (D+1)^{-1}xe^{2x} &= e^{2x}(D+3)^{-1}x \\
+    &= e^{2x} \cdot \frac{1}{3}(1-\frac{D}{3}+\frac{D^2}{9}-\cdots)x \\
+    &= e^{2x} \cdot \frac{1}{3}(x-\frac{1}{3}) \\
+    &= \frac{1}{9}(3x-1)e^{2x}.
+\end{align*}
+
+次に，$(D-1)^2 \left(e^{2x}\cdot \frac{3x-1}{9}\right)$を計算する．
+\begin{align*}
+    (D-1)^2 \left(e^{2x}\cdot \frac{3x-1}{9}\right) \beceq{\text{推移法則}} \frac{1}{9}e^{2x}(D+1)^{-2}(3x-1).
+\end{align*}
+$(\lambda+ 1)^{-2}$を知るためには
+\begin{align*}
+    (\lambda+1)^{-2} &= \left(\frac{1}{\lambda+1}\right)^2 \\
+    &= (1-\lambda+\lambda^2-\lambda^3+\cdots)^2
+\end{align*}
+を計算すればよい．また，$\frac{d}{d\lambda}(1+\lambda)^{-1} = -(1+\lambda)^{-2}$より
+\begin{align*}
+    (1+\lambda)^{-2} &= -\frac{d}{d\lambda}(1+\lambda)^{-1} \\
+    &= -\frac{d}{d\lambda}(1-\lambda+\lambda^2-\lambda^3+\cdots) \\
+    &= 1-2\lambda+ 3\lambda^2-4\lambda^3+\cdots.
+\end{align*}
+ちなみに，直接$(1-\lambda+\lambda^2-\lambda^3+\cdots)^2$を計算してもよい．よって
+\begin{align*}
+    (D+1)^{-2}(3x-1) &= (1-2D)(3x-1) \\
+    &= 3x-7.
+\end{align*}
+となり，$y=\frac{1}{9}e^{2x}(3x-7)$を得る．
+
+\begin{note*}[なんで$(1-2D)$で打ち切ったの？]
+    $f(x)=3x-1$は高々1次であるから，$D^2$以降を作用させたとしても，その計算結果は0となる．したがって，1次までで十分である．
+\end{note*}
+
+別解答としては，次のようなものが挙げられる：
+\begin{align*}
+    (D+1)^{-2} (3x-1) &= (D+1)^{-1} (D+1)^{-1} (3x-1) \\
+    &\beceq{\text{Maclaurine}} (D+1)^{-1} \left(\textcolor{red}{(1-D)}(3x-1)\right) \\
+    &= (D+1)^{-1}(3x-4) \\
+    &\beceq{\text{Maclaurine}} \textcolor{red}{(1-D)}(3x-4) \\
+    &= 3x-7.
+\end{align*}
+いずれの方法にせよ，計算できるようにすることが大事である．テストで必ず出題される．
+
+
+\subsection{定数係数の連立微分方程式について}
+次のような連立微分方程式を考えたい：
+\begin{equation} \label{eq:14-連立}
+    \begin{cases}
+        y_1' = 3y_1 + 4y_2 \\
+        t'_2 = 2y_1 + y_2.
+    \end{cases}
+\end{equation}
+$\bm{y} \coloneqq (y_1 \; y_2)^\top$とすれば，\eqref{eq:14-連立}は
+\[ 
+\begin{pmatrix}
+    y_1 \\ y_2
+\end{pmatrix}
+= 
+\begin{pmatrix}
+    3 & 4 \\ 1 & 1
+\end{pmatrix}
+\begin{pmatrix}
+    y_1 \\ y_2
+\end{pmatrix}.\]
+のように書ける．$A \coloneqq
+\begin{pmatrix}
+    3 & 4 \\ 1 & 1
+\end{pmatrix},$とおけば，$\bm{y}' = A\bm{y}$となる．
+
+復習をしよう．$y'=ay$の解は$y=ce~{ax}$であった．今回は$\bm{y}' = A\bm{y}$と形は似ているが，係数は行列だし，$y$はベクトルである．ここで，次のような疑問が浮かんでくるのは自然であろう：
+\begin{question*}
+    $e^{ax}$に相当するもの，つまり$\bm{e^{xA}}$なるものは存在するのか．
+\end{question*}
+ちなみに，$\bm{e^{xA}}$を\textbf{行列の指数関数}という．
+
+次の微分方程式を考えよう：
+\begin{equation}
+    \bm{y}' = A\bm{y}. \label{eq:14-H}
+\end{equation}
+ただし，$\bm{y} \coloneqq (y_1(x) \; y_2(x) \; \cdots \; y_n(x))^\top$，$A=(a_{ij})$を定数行列とする．\eqref{eq:14-H}は次のようにも書ける：
+\begin{equation}
+    D\bm{y} = A\bm{y}.
+\end{equation}
+今，$\bm{y}=e^{\lambda x}\bm{c}$が解だと思って\eqref{eq:14-H}に代入してみよう．
+\begin{align*}
+    D\bm{y} &= \lambda e^{\lambda x} \bm{c}, \\
+    A\bm{y} &= e^{\lambda x} \cdot A\bm{c}.
+\end{align*}
+したがって
+\begin{align*}
+    \lambda e^{\lambda x} \bm{c} &= A(e^{\lambda x} \bm{c}) \\
+    (A-\lambda I)(e^{\lambda x}\bm{c}) &= \bm{0} \\
+    e^{\lambda x}(A-\lambda)\bm{c} &= \bm{0}.
+\end{align*}
+ここで，$I$は単位行列である．
+\begin{remark}
+    \eqref{eq:14-H}の自明でない解を見つけるためには，$(A-\lambda)\bm{c} = \bm{0}$をみたす$\bm{c} \neq \bm{0}$を探せばよい．
+\end{remark}
+このとき，$\lambda$を固有値，$\lambda$に対応する$\bm{c}$を固有ベクトルという．$(A-\lambda)\bm{c} = \bm{0}$が$\bm{c} \neq \bm{0}$なる解をもつための必要十分条件は$\det (A-\lambda) = 0$である．このことがスッとこない場合は，線形代数を復習すること．
+\begin{note*}
+    $\det (A-\lambda I) \neq 0$だとすると，逆行列$(A-\lambda I)^{-1}$が存在するから
+    \[ (A-\lambda I)^{-1} (A-\lambda I) \bm{c} = \bm{c} = \bm{0}\]
+    となり，$\bm{c} = \bm{0}$という自明な解が得られてしまう．
+\end{note*}
+
+さて，\eqref{eq:14-H}の初期値問題
+\[ \begin{cases}
+    \bm{y}' = A\bm{y}, \\
+    \bm{y}(0) = \bm{\alpha}
+\end{cases}\]
+を考えよう．ここで，指数関数のマクローリン展開について復習しておこう．
+\begin{remind}[指数関数の]
+    $e^{ax}$のMaclaurine展開は次である:
+    \begin{align*}
+        e^{ax} &= 1 + ax + \frac{(ax)}{2!} + \frac{(ax)^3}{3!} + \cdots \\
+        &= \sum_{n=0}^{\infty} \frac{x^k}{k!} a^k.
+    \end{align*}
+\end{remind}
+形式的に，次のようにおいてみる．つまり，$a$を行列$A$で置き換えてみる．
+\begin{align*}
+    e^{xA} &\coloneqq I + xA + \frac{1}{2!}(xA)^2 + \cdots + \frac{1}{n!}(xA)^n + \cdots \\ 
+    &= \sum_{k=0}^{\infty} \frac{x^k}{k!}(A^k).
+\end{align*}
+これを\textbf{行列の指数関数}と定義し，$e^{xA}$とかく．
+\begin{note*}
+    右辺の級数は，"良い"収束をする．要は，一様収束のこと．ここらへんについては\ref{book:takahashi}などに書いてある．
+\end{note*}
+$A^k$が$n$次正方行列であるから，右辺の級数も同様である．つまり$e^{xA}$は$n$次正方行列である．
+
+ここで，$e^{xA}$の性質について述べよう．
+\begin{proposition}
+    行列の指数関数$e^{xA}$は次のような性質をもつ：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $e^{x O} = I$．ここで$O$は零行列である．
+        \item $(e^{xA})^{-1} = e^{-xA}.$
+        \item $e^{(x+y)A} = e^{xA} \cdot e^{xA} = e^{yA} \cdot e^{xA}.$
+        \item $e^{x(aI+A)} = e^{ax} e^{xA}.$
+        \item $\displaystyle \frac{d}{dx}(e^{xA}) = A e^{xA}.$
+    \end{enumerate}
+\end{proposition}
+今，$e^{xA}$に初期値$\bm{\alpha}$を作用させた$\bm{y}(x)=e^{xA}\bm{\alpha}$について
+\begin{align*}
+    \bm{y}(0) &= e^{0A} \cdot \bm{\alpha} = e^0 \pmb{\alpha} = \bm{\alpha}, \\
+    \bm{y}(x) &= \frac{d}{dx}(e^{xA}\bm{\alpha}) = Ae^{xA}\bm{\alpha} = A\bm{y}(x),
+\end{align*}
+つまり$\bm{y}(0)=\bm{\alpha}, \; \bm{y}(x)=A\bm{y}(x)$であるから，$\bm{y}(x)=e^{xA}\bm{\alpha}$が初期値問題の解になっている．
+
+\begin{theorem}
+    次の初期値問題の解は，$\bm{y}(x)=e^{xA}\alpha$となる：
+    \[ \begin{cases}
+        \bm{y}' = A\bm{y}, \\
+        \bm{y}(0) = \bm{\alpha}.
+    \end{cases}\]
+    存在定理から，一意性も保証されている．
+\end{theorem}
+さらに，非同次問題についても考えよう．
+\begin{equation} \label{eq:14-I}
+    \begin{cases}
+        \bm{y}(x) = A\bm{y} + \bm{b}, \\
+        \bm{y}(0) = \bm{\alpha}.
+    \end{cases}
+\end{equation}
+
+\begin{theorem}
+    \eqref{eq:14-I}の解は，次となる：
+    \[ \bm{y}(x) = e^{xA}\bm{\alpha} + \int_{0}^{x} e^{(x-t)A}\bm{b}(t) \; dt.\]
+    第1項目は基本解部分（余因子），第2項目は特殊解となる．
+\end{theorem}
+
+\vfill
+次回予告をしておこう．
+\begin{question*}
+    行列$A$に対する，$e^{xA}$は何者なのか．そしてそれはいかにして求めるのか．
+\end{question*}

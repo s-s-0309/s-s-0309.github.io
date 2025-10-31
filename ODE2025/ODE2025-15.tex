@@ -1,0 +1,148 @@
+\section{行列の指数関数（その2）}
+念のため，前回までの復習をしよう．\eqref{eq:14-I}の解は，次となることを確かめた：
+    \[ \bm{y}(x) = e^{xA}\bm{\alpha} + \int_{0}^{x} e^{(x-t)A}\bm{b}(t) \; dt.\]
+前回を通して一貫した疑問に「$e^{xA}$は何者なのか」が挙げられる．今回はこれについて答えを与えよう．
+
+以後の議論では，
+\begin{center}
+    ($\ast$) 行列$A$に対して，ある正則行列$P$があって$P^{-1}AP$が「簡単」になるとき
+\end{center}
+を考えることとする．
+
+\begin{note*}[「簡単」とは]
+    「簡単」とは，$A$の固有値を求めたとき，各固有値に対する固有ベクトルが合わせて$n$個あることを指す．
+
+    ちなみに，$P^{-1}AP$が対角行列にならない場合がある．いわゆる\textbf{ジョルダン標準形}になるときである．これも含めた議論についてはいろいろな本に書いてある．わたしは\ref{book:takahashi}でそれをみたとき，そっと本を閉じた．読む気にもなれなかった．ただ一度は読まねばならない．
+\end{note*}
+\begin{talk*}
+    中川先生も，ジョルダン標準形も含めた議論を初めて見たとき，嫌になって本を閉じたらしい．
+\end{talk*}
+
+($\ast$)の意味について考察しよう．$A$の固有値$\lambda_1 \leq \lambda_2 \leq \cdots \leq \lambda_n$に対して，固有ベクトルをそれぞれ$\bm{u}_1,\; \bm{u}_2, \ldots, \bm{u}_n$とおく．正則行列$P$を次で定めよう：
+\[ P \coloneqq (\bm{u}_1 \; \bm{u}_2 \; \cdots \; \bm{u}_n)^\top. \]
+ただし，$P$は実$n \times n$正方行列である．このとき，$P$は正則で逆行列$P^{-1}$が存在する．
+したがって
+\[ B = P^{-1}AP = 
+\begin{pmatrix}
+    \lambda_1 & & & \text{\Large O} \\
+     & \lambda_2 & & \\
+     & & \ddots & \\
+     \text{\Large O}& & & \lambda_n
+\end{pmatrix}\]
+となる．対角成分以外は0であることに注意しよう（これは($\ast$)という場合を考えているから）．
+
+さて，行列の指数関数$e^{xA}$は次で定義されていた：
+\[ e^{xA} \coloneqq 1 + xA + \frac{1}{2!}(xA)^2 + \cdots + \frac{1}{n!}(xA)^n + \cdots. \]
+$A^n$をみるために，$B=P^{-1}AP$を用いる．$A=PBP^{-1}$より，$A^n=(PBP^{-1})^n$である．
+\begin{align*}
+    A^n &= (PBP^{-1})(PBP^{-1}) \cdots (PBP^{-1}) \\
+    &= PB^nP^{-1}.
+\end{align*}
+よって，$A^n=PB^nP^{-1}$を用いて
+\begin{align*}
+    e^{xA} &= PP^{-1} + xPBP^{-1} + \frac{x^2}{2!}(PB^2P^{-1}) + \cdots + \frac{1}{n!}(PB^nP^{-1}) + \cdots \\
+    &= P(I + xB + \frac{x^2}{2!}B^2 + \cdots + \frac{x^n}{n!}B^n + \cdots)P^{-1}
+\end{align*}
+とできる．以上より，$e^{xA}=Pe^{xB}P^{-1}$を得る．
+
+$e^{xB}$に着目しよう．
+\begin{align*}
+    e^{xB} &= 
+    \begin{pmatrix}
+        1+x\lambda_1+\frac{(x\lambda_1)^2}{2!}+\cdots & 0 & \cdots & 0 \\
+        0 & 1+x\lambda_2+\frac{(x\lambda_2)^2}{2!}+\cdots & \cdots & 0 \\
+        \vdots & \vdots& \ddots & \vdots \\
+        0 & 0 & \cdots & 1+x\lambda_n+\frac{(x\lambda_n)^2}{2!}+\cdots
+    \end{pmatrix} \\
+    &= 
+    \begin{pmatrix}
+        e^{\lambda_1x} & 0 & \cdots & 0 \\
+        0 & e^{\lambda_2x} & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & e^{\lambda_nx}
+    \end{pmatrix}
+\end{align*}
+より，$e^{xB}$が対角行列として表現できたから，$e^{xA} = Pe^{xB}P^{-1}$として計算すればよい．
+
+\begin{example}
+    $A \coloneqq \begin{pmatrix} -1 & 2 \\ -4 & 5 \end{pmatrix}$とするとき，$e^{xA}$と$\bm{y}'=A\bm{y}$の一般解，そして初期値問題$\bm{y}(0)=\begin{pmatrix} 1 \\ 3 \end{pmatrix}$に対する解を求める．
+
+    固有方程式$\phi(t)=\det (A-tI)=0$の解を求める．$\phi(t)=(t-1)(t-3)$であるから，$t=1,3$が解である．
+
+    固有値1に対する固有ベクトルを求めよう．$\bm{y} \coloneqq (x\; y)^\top$とする．
+    \[ \begin{pmatrix}
+        -1-1 & 2 \\
+        -4 & 5-1
+    \end{pmatrix}
+    \begin{pmatrix}
+        x \\ y
+    \end{pmatrix}
+    =\bm{0}\]
+    をとく．計算の末，固有ベクトルとして$(x\; y)^\top=(1 \; 1)^\top$がとれることがわかる．
+
+    固有値3に対する固有ベクトルを求めよう．$\bm{y} \coloneqq (x\; y)^\top$とする．
+    \[ \begin{pmatrix}
+        -1-3 & 2 \\
+        -4 & 5-3
+    \end{pmatrix}
+    \begin{pmatrix}
+        x \\ y
+    \end{pmatrix}
+    =\bm{0}\]
+    をとく．計算の末，固有ベクトルとして$(x\; y)^\top=(1 \; 2)^\top$がとれることがわかる．
+
+    $\bm{u}_1 \coloneqq (1\; 1)^\top, \; \bm{u}_2 \coloneqq (1\; 2)^\top$として，$P^{-1} \coloneqq \begin{pmatrix} 1 & 1 \\ 1 & 2\end{pmatrix}$とおく．このとき，$P^{-1}=\begin{pmatrix} 2 & -1 \\ -1 & 1 \end{pmatrix}$となる．
+
+    さて，$B \coloneqq P^{-1}AP = \begin{pmatrix} 1 & 0 \\ 0 & 3 \end{pmatrix}$とおく．ここで
+    \[ e^{xB} = \begin{pmatrix} e^x & 0 \\ 0 & e^{3x} \end{pmatrix} \]
+    であるから
+    \begin{align*}
+        e^{xA} &= Pe^{xB}P^{-1} \\
+        &= 
+        \begin{pmatrix}
+            1 & 1 \\
+            1 & 2
+        \end{pmatrix}
+        \begin{pmatrix}
+            e^x & 0 \\
+            0 & e^{3x}
+        \end{pmatrix}
+        \begin{pmatrix}
+            2 & -1 \\
+            -1 & 1
+        \end{pmatrix} \\
+        &= 
+        \begin{pmatrix}
+            2e^x-e^{3x} & -e^x+e^{3x} \\
+            2e^x-2e^{3x} & -e^x+2e^{3x}
+        \end{pmatrix}
+    \end{align*}
+    を得る．よって，一般解は，$\bm{c} \coloneqq (c_1 \; c_2)^\top$として
+    \[ \bm{y}(x) = e^{xA}\bm{c}\]
+    となる．初期値問題については
+    \begin{align*}
+        \bm{y}(x) &= 
+        \begin{pmatrix}
+            2e^x-e^{3x} & -e^x+e^{3x} \\
+            2e^x-2e^{3x} & -e^x+2e^{3x}
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 \\ 3
+        \end{pmatrix} \\
+        &= -e^x\begin{pmatrix} 1 \\ 1 \end{pmatrix} + 2e^{3x} \begin{pmatrix} 1 \\ 2 \end{pmatrix} \\
+        &= -e^x \bm{u}_1 + 3e^{3x} \bm{u}_2
+    \end{align*}
+    となる．
+\end{example}
+
+\begin{remark}
+    $-e^x \bm{u}_1 + 3e^{3x} \bm{u}_2$をみればわかるように，解が$\bm{u}_1, \; \bm{u}_2$という行列$A$の固有ベクトルで表されている．
+\end{remark}
+
+\begin{homework*}
+    $A \coloneqq \begin{pmatrix}
+        2 & -1 \\ 
+        -2 & 3
+    \end{pmatrix}$だとどうなるか，各自計算せよ．
+\end{homework*}
+

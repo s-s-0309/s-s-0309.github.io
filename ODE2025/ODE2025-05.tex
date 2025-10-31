@@ -1,0 +1,171 @@
+\section{逐次近似法（続き）・求積法} %第5回
+\subsection{逐次近似法（続き）}
+\begin{definition}[正規形]
+    $n$階のODEが\textbf{正規形}であるとは，$y^{(n)}$についてとける，すなわち
+    \begin{equation}
+        y^{(n)} = f(x, y, y', \ldots, y^{(n-1)}) \label{eq:ast}
+    \end{equation}
+    とできるときをいう．
+\end{definition}
+
+\begin{example}
+    $y'=ay, \; y''+y=0$は正規形である．
+\end{example}
+
+\eqref{eq:ast}について，$y(x) \coloneqq y_1(x), \; y'(x) \coloneqq y_2(x), \ldots, y^{(n-1)}(x) \coloneqq y_n(x)$とおくとき，両辺をそれぞれ微分すると
+\[ y'(x) = {y_1(x)}' = y_2, \; y''(x) = {y_2(x)}' = y_3, \ldots, y^{(n)}(x) = y_n'.\]
+となり，これをベクトルを用いて表現すると以下のようになる：
+\begin{equation}
+    \frac{d}{dx}
+    \begin{pmatrix}
+        y_1(x) \\ y_2(x) \\ \vdots \\ y_{n-1}(x) \\ y_n(x)
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        y_2(x) \\ y_3(x) \\ \vdots \\ y_n(x) \\ f(x,y,\ldots,y_n)
+    \end{pmatrix}.
+\end{equation}
+
+$\bm{y}(x) \coloneqq (y_1 \; \cdots \; y_n)^\top$とおくと
+\begin{equation}
+    \bm{y}'(x) = \bm{f}(\bm{x},y) \label{eq:dagger}
+\end{equation}
+となる（ベクトルを用いているが，正規形であることに注意しよう）．
+
+\eqref{eq:dagger}を積分すると
+\begin{align*}
+    \bm{y}(x) &= \int \bm{f}(t,y(t)) \; dt + \bm{c}, \\
+    \bm{y}(x) &= \int \bm{f}(t,z(t)) \; dt + \bm{c}
+\end{align*}
+となる．ここで，$\bm{c}$は定ベクトルである（全ての成分が定数であるようなベクトルのこと）．こｋで，次のことが成り立つ：
+\begin{center}
+    $\bm{y}$が\eqref{dagger}の解である$\iff$$\bm{y}=\bm{z}$.
+\end{center}
+この考え方を利用したのが，\textbf{ピカールの逐次近似法}である．
+
+$x=a$のとき$\bm{y}=\bm{c}$となる解は次のようになる：
+\[ y(x) = \bm{c} + \int_{a}^{x} \bm{f}(t,\bm{y}(t)) \; dt.\]
+関数列$\{y_n\}$を次のように帰納的に定める：
+\begin{align*}
+    y_0(x) &= \bm{c}, \\
+    y_k(x) &= \bm{c} + \int_{a}^{x} \bm{f}(t,y_{k-1}) \; dt.
+\end{align*}
+$\lim_{k \to \infty} y_k(x)$が存在すれば，それが解となる．ただし，$\bm{f}$には条件が必要である．
+\begin{homework*}
+    $\bm{f}$について必要となる条件について考察せよ．
+\end{homework*}
+
+\subsection{求積法}
+\subsubsection{変数分離形}
+\begin{equation}
+    y'(x) = P(x) Q(y).  \label{eq:ast-0}
+\end{equation}
+ここで，$P(x)$は$x$についての式，$Q(y)$は$y$についての式である．
+
+変数分離形の解き方については以下のように手順がある：
+\begin{enumerate}[label=(\arabic*)]
+    \item $Q(y_0)=0$となる解$y_0$はあるのか．もしあるなら，$y(x)=y_0$は解となる（$\because$ $y'=0$から$y=y_0$が従う）．
+    \item $y(x) \neq y_0$のとき（すなわち$Q(y) \neq 0$）
+    \begin{equation}
+        \frac{1}{Q(y)} dy = P(x) \label{eq:ast-1}
+    \end{equation}
+    となる．$G(y) \coloneqq \int \frac{1}{Q(y)} \; dy$とおく．このとき，$y$は$x$の関数より，次が従う：
+    \[ \frac{d}{dx} G(y) = \frac{dG}{dy} \frac{dy}{dx} = \frac{1}{Q(y)} y''(x).\]
+    これを\eqref{eq:ast-1}に代入すると
+    \[ \frac{d}{dx} G(y) = \int P(x) \; dx + C\]
+    となる．両辺$x$で積分すると
+    \[ G(y) = \int P(x) \; dx + C\]
+    となる．したがって，我々は以下を得る：
+    \[ \int \frac{1}{Q(y)} \; dy = \int P(x) \; dx + C.\]
+    計算して，$y$について整理したものが解である．
+\end{enumerate}
+
+\begin{example}
+    $y'=y$について考える．これは
+    \begin{equation}
+        \begin{cases}
+            P(x) = 1, \\
+            Q(y) = y
+        \end{cases}
+    \end{equation}
+    の変数分離形である．先ほど述べた手順に沿って解を求めよう．
+
+    (1) $Q(y)=0$となる解があるかどうかみよう．実際，$y_0=0$は解であることがわかる．
+
+    (2) $Q(y) \neq 0$のとき$\frac{1}{y} \; dy = 1 \; dx$であるから
+    \begin{align*}
+        \log |x| &= x+c \\
+        \iff |y| &= e^{x+c} \\
+        \iff y &= \pm e^c e^x.
+    \end{align*}
+    $C \coloneqq \pm e^c$とおくと，$c \neq 0$で$y=Ce^x$となる．
+
+    (1),(2)より，$y(x)=0$は$C=0$としたときに相当することがわかる．よって解は$y(x)=Ce^x$である．
+\end{example}
+
+\begin{example}
+    $y'(x)=y^{2/3}$を考える．これは
+    \begin{equation}
+        \begin{cases}
+            P(x) = 1, \\
+            Q(y) = y^{\frac{2}{3}}
+        \end{cases}
+    \end{equation}
+    の変数分離形である．こちらも，先ほど述べた手順に沿って解を求めよう．
+
+    (1) $y_0=0$とすると，$Q(y_0)=0$よりこれは解である．
+
+    (2) $Q(y) \neq 0 \quad \ie \quad y \neq 0$のとき
+    \begin{align*}
+        \int \frac{1}{3y^{2/3}} &= \int 1 \\
+        y^{1/3} &= x+c \\
+        y &= (x+c)^3.
+    \end{align*}
+
+    $y=0$はどの$c$にも対応しない．したがって$y=0, \; (x+c)^3$が解である．
+\end{example}
+
+\begin{example}
+    $y' = xy + xy^2$を考える．これは
+    \begin{equation}
+        \begin{cases}
+            P(x) = x, \\
+            Q(y) = y+y^2
+        \end{cases}
+    \end{equation}
+    の変数分離形である．
+
+    (1) $y = 0, \; -1 $とすると，$Q(y_0)=0$よりこれらは解である．
+
+    (2) $y(x) \neq y_0$のとき
+    \begin{align*}
+        \int \frac{1}{y+y^2} \; dy &= \int x \; dx \\
+        \int \left( \frac{1}{y} - \frac{1}{y+1}\right) \; dx &= \int x \; dx \\
+        \log |y| - \log |y+1| &= \frac{1}{2}x^2 + c \\
+        \log \left|\frac{y}{y+1}\right| &= \frac{1}{2}x^2 + c \\
+        \frac{y}{1+y} &= Ce^{x^2/2},
+    \end{align*}
+    となる．ただし$c \neq 0$とする．したがって$y=\frac{Ce^{x^2/2}}{1-Ce^{x^2/2}}$を得る．
+
+    $c=0$が$y=0$に対応することがわかる．一方，$y=-1$に対応する$c$は存在しない．以上より，解は以下になる：
+    \[ y = \frac{Ce^{x^2/2}}{1-Ce^{x^2/2}}, \; -1.\]
+\end{example}
+
+\subsubsection{同次形}
+\begin{equation}
+    y'(x) = f\left(\frac{y}{x}\right). \label{eq:同次形}
+\end{equation}
+同次形は，変数変換して変数分離形に帰着することができる．実際，$z \coloneqq \frac{y(x)}{x}$とすると$y(x) = x \cdot z(x)$となり，これらを両辺微分すると
+\begin{align*}
+    y'(x) = z(x) + xz'(z) &= f(z(x))  \\
+    z'(x) &= \frac{f(z) - z}{x}.
+\end{align*}
+これは$\begin{cases} P(x)=x^{-1}, \\ Q(z)=f(z)-z \end{cases}$の変数分離形である．あとは，さきほど紹介した変数分離形を解く手順に従えば解を得ることができる．
+
+\begin{example}
+    $y'(x)=\frac{xy}{x^2+y^2}$を考える．
+    \begin{align*}
+        \frac{xy}{x^2+y^2} = \frac{y/x}{1+(y/x)^2}
+    \end{align*}
+    より，これは同次形である（$\because z = y/x, \; f(z) \coloneqq \frac{z}{1+z^2}.$）
+\end{example}

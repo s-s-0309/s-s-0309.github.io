@@ -1,0 +1,158 @@
+\section{線形微分方程式} %第7回
+\subsection{線形とは}
+\begin{equation}
+    y'(x) + P(x)y(x) = Q(x). \label{eq:1order-lode}
+\end{equation}
+$Q(x)=0$ならば，これは同次の1階線形微分方程式である．一方，$Q(x) \neq 0$ならば，これは非同次の1階線形微分方程式である．
+
+\begin{note*}[線形とは]
+    $y_1,\; y_2$を同次方程式の解とする．すなわち，次が成り立つ：
+    \[ y_1' + P(x)y_1 = 0 \quad \text{and} \quad y_2' +  P(x)y_2 = 0.\]
+    \textbf{線形である}とは，$y_1+y_2, \; \alpha y_1 \; (\alpha \in \mathbb{K})$が同次方程式の解であることをいう．しばしば，和と定数倍で閉じている，などという．
+
+    「線形」という言葉はここ以外でも聞いたことがあるだろう．例えば，線形代数における線形写像は最たる例である．線形写像がピンとこない場合は線形代数を復習すること．
+\end{note*}
+
+$y_1+y_2$が解となっているか確認しよう．$(y_1+y_2)'+P(x)(y_1+y_2)=0$がなりたてばO.K.である．
+\begin{align*}
+    (y_1+y_2)'+P(x)(y_1+y_2) &= (y_1'+y_2')+P(x)(y_1+y_2) \\
+    &= (y_1'+P(x)y_1)+(y_2'+P(x)y_2) \\
+    &= 0+0 = 0
+\end{align*}
+となり，確かになりたつ．
+
+$\alpha y_1 \; (\alpha \in \mathbb{R})$が解となっているか確認しよう．$(\alpha y_1)'+P(x)(\alpha y_1)=0$がなりたてばO.K.である．
+\begin{align*}
+    (\alpha y_1)'+P(x)(\alpha y_1) &= \alpha y_1' + \alpha P(x)y_1 \\
+    &= \alpha (y_1' + P(x)y_1) \\
+    &= \alpha \cdot 0 =0
+\end{align*}
+となり，確かになりたつ．
+
+以上より，和と定数倍で閉じていることから，線形である．
+
+\begin{example}[線形ではない例]
+    $y''+y^2=0$について，これは線形ではない．実際，$\alpha \in \mathbb{R}$に対して$y=\alpha y_1$とおくと
+    \[ \alpha y_1' + \alpha^2 {y_1}^2 = \alpha (y_1' + \alpha {y_1}^2)\]
+    となり，定数倍で閉じてないことよりわかる（$y_1' + \alpha {y_1}^2$が0になるかは不明だから）．
+\end{example}
+
+ここで，以後の議論で混乱を招かないために，記法について断りを入れておく．$P(t)$の不定積分の変数が$x$であるとき
+\[ \int^{x} P(t) \; dt\]
+とかく．これは$x$の式となる．
+
+次のような微分方程式を考えよう：
+\begin{align}
+    y'+P(x)y &= 0, \label{eq:h} \\
+    y'+P(x)y &= Q(x). \label{eq:i}
+\end{align}
+まず\eqref{eq:h}に着目しよう．$y'=-P(x)y$と同値であり，これは変数分離形である．ではこれを解いてみよう．
+
+\begin{align*}
+    \frac{dy}{y} &= -P(x) \; dx \\
+    \log|y| &= - \int^{x} P(t) \; dt + c 
+\end{align*}
+であるから，$|y|=e^ce^{-\int^{x} P(t) \; dt}$すなわち$y=Ke^{-\int^{x} P(t) \; dt}$となる（$K=0$は自明解）．
+
+$e^{-\int^{x} P(t) \; dt}$が解であるから，両辺$e^{\int^{x} P(t) \; dt}$をかけると
+\begin{align*}
+    e^{\int^{x} P(t) \; dt}(y'+P(x)y) &= 0 \\
+    e^{\int^{x} P(t) \; dt}y' + e^{\int^{x} P(t) \; dt} P(x)y &= 0 \\
+    e^{\int^{x} P(t) \; dt}y' + \left(e^{\int^{x} P(t) \; dt}\right) y &= 0.
+\end{align*}
+積の微分法より
+\[ \frac{d}{dx} \left(e^{\int^{x} P(t) \; dt}y\right)\]
+となり，積分すると
+\[ e^{\int^{x} P(t) \; dt}y = c\]
+となり，両辺に$e^{-\int^{x} P(t) \; dt}$をかけると
+\[ y = ce^{-\int^{x} P(t) \; dt}\]
+を得る．
+
+この考えは\eqref{eq:i}を解くときに役立つ．では，\eqref{eq:i}を解いてみよう．
+
+\eqref{eq:h}の両辺に$e^{\int^{x} P(t) \; dt}$をかけると
+\[ e^{\int^{x} P(t) \; dt}y' + e^{\int^{x} P(t) \; dt} P(x)y = e^{\int^{x} P(t) \; dt} Q(x)\]
+となり，\eqref{eq:h}のとき同様に
+\[ \frac{d}{dx} \left(e^{\int^{x} P(t) \; dt} y\right) = e^{\int^{x} P(t) \; dt} Q(x)\]
+となる．この両辺を$x$で積分すると
+\[ e^{\int^{x} P(t) \; dt} y(x) = \int^x e^{\int^{x} P(\tau) \; d\tau} dt + c\]
+である．よって，次のような解を得る：
+\begin{equation}
+    y(x) = e^{-\int^{x} P(t) \; dt} \left( \int^x e^{\int^{x} P(\tau) \; d\tau} Q(t) \; dt +c \right).
+\end{equation}
+
+これを\textbf{定数変化公式}という．特に$Q \equiv 0$のとき
+\[ y(x) = ce^{-\int^{x} P(t) \; dt}\]
+となり，これは\eqref{eq:h}の解になっている．
+
+\begin{note*}[「定数変化」の意味 ---どこらへんが定数なの？---]
+    \eqref{eq:h}の解は$y(x) = ce^{-\int^{x} P(t) \; dt}$であった．\eqref{eq:i}の解$\tilde{y}$があったとすると
+    \begin{align*}
+        \tilde{y} &= y(x) = e^{-\int^{x} P(t) \; dt} \times (\text{xの関数}) \\
+        &= C(x) e^{-\int^{x} P(t) \; dt}
+    \end{align*}
+    とかけていないといけない．ここで，$C(x)$とは$x$の関数と見る．「定数変化」というのは，\eqref{eq:h}における定数$c$を，$C(x)$という$x$の関数に置き換わったことを指す．それゆえ，定数変化といっているわけである．
+\end{note*}
+
+\begin{remark}
+    $Q(x)$が決まれば$\tilde{y}$がわかる．
+\end{remark}
+
+実際，$\tilde{y}=C(x)e^{-\int^{x} P(t) \; dt}$が解だと思って\eqref{eq:i}に代入する．
+\begin{align*}
+    \tilde{y} + P(x)\tilde{y} &= C'(x)e^{-\int^{x} P(t) \; dt} + C(x)\{-e^{-\int^{x} P(t) \; dt} (\int^x P(t) \; dt)' \} + P(x) (C(x)e^{-\int^{x} P(t) \; dt}) \\
+    &= C'(x) e^{-\int^{x} P(t) \; dt} \\
+    &= Q(x).
+\end{align*}
+ここで，$(\int^x P(t) \; dt)' = P(x)$であることに注意しよう（微分積分学の基本定理）．したがって
+\begin{align*}
+    C'(x) &= Q(x) e^{\int^{x} P(t) \; dt} \\
+    C(x) &= \int^x  Q(t) e^{\int^{x} P(\tau) \; d\tau} \; dt + C.
+\end{align*}
+$C(x)$を$\tilde{y}$に代入すると
+\[ \tilde{y} = e^{-\int^{x} P(t) \; dt} \left\{ \int^x Q(t) e^{\int^{x} P(\tau) \; d\tau} \; dt + C\right\}\]
+を得る．
+
+\subsection{具体例}
+\begin{example}
+    抵抗$R$，インダクタンス$L$，直流電流$E$を直列につないだ回路を考える．ただし，$R,L,E$は定数である．スイッチSを閉じたあと，時刻$t$での電流$I(t)$を求めたい．\footnote{図は省略させていただく．描くのは結構しんどいからである．この問題はものすごく有名であるから適当な書物にあたってほしい．なお，数理モデリングで全く同じ内容を扱っている．覚えているかな？}
+
+    抵抗$R$での逆起電力は$RI$で，インダクタンスでは$L\frac{dI}{dt}$となるから，キルヒホッフの法則より
+    \begin{equation}
+        RI+L\frac{dI}{dt} = E
+    \end{equation}
+    という，線形の微分方程式が得られる．ここで，次の2つの微分方程式を考えよう：
+    \begin{align}
+        I'(t) + \frac{R}{L}I(t) &= 0, \label{eq:kairo-H} \\
+        I'(t) + \frac{R}{L}I(t) &= \frac{E}{L}. \label{eq:kairo-I}
+    \end{align}
+    \eqref{eq:kairo-H}の解の1つとして$I(t) = e^{-\frac{R}{L}t}$がある．\eqref{eq:kairo-I}の両辺に$e^{\frac{R}{L}t}$をかけると
+    \begin{align*}
+        e^{\frac{R}{L}t} I'(t) + e^{\frac{R}{L}t} \frac{R}{L} I(t) &= \frac{E}{L} e^{\frac{R}{L}t} \\
+        \frac{d}{dx} \left(e^{\frac{R}{L}t} I(t) \right) &= \frac{E}{L} e^{\frac{R}{L}t}
+    \end{align*}
+    より
+    \begin{align*}
+        e^{\frac{R}{L}t} I(t) &= \int \frac{R}{L} e^{\frac{R}{L}t} \; dt + c \\
+        &= \frac{E}{R} e^{\frac{R}{L}t} + c.
+    \end{align*}
+    よって
+    \[ I(t) = \frac{E}{R} + ce^{-\frac{R}{L}t}.\]
+    さて，初期条件$I(0) \coloneqq 0$を課すと，$c=-\frac{E}{R}$となる．このとき
+    \[ I(t) = \frac{E}{R}(1 - e^{-\frac{R}{L}t}). \]
+    $t \to \infty$なる極限をとると
+    \[ I(t) \to \frac{E}{R}. \]
+    微分方程式から得られた結果は，直感（それとも知識？）と一致していることが確かめられたであろう．
+\end{example}
+
+\begin{homework*}
+    \eqref{eq:kairo-H}の解としてある$I(t) = e^{-\frac{R}{L}t}$を用いて，定数変化法で解け．
+\end{homework*}
+
+\begin{note*}[交流電流のときは...]
+    $L\frac{dI}{dt} + RI = \sin \omega t$とすればよい．解き方はひとそれぞれ．
+\end{note*}
+
+%\begin{talk*}[回路図]
+    %先生の描いた図において，起電力がコンデンサーに見えた．本当は，線の長さを明確に変えるべきなのだが，どちらもほぼ同じであった．後日，そのことを物理コースの知り合いが指摘していた．実は講義中に，先生は物理の人いる？と聞いて，実際に彼女に合っているかどうかを尋ねていた．そのとき，彼女はうやむやな表情を浮かべながら正しいと主張した．そのときに「違う．それはコンデンサー．」と言えば良かったのにと，わたしは勝手に思ってしまった．なんで指摘しなかったのかはわからない．本人の性格が起こした事柄といえよう．
+%\end{talk*}

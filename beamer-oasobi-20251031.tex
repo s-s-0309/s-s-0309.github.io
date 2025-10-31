@@ -1,0 +1,145 @@
+\documentclass[dvipdfmx,aspectratio=141]{beamer}
+%%%---------beamerの設定---------%%%
+\usetheme{Madrid} %select: Madrid, Luebeck, metropolis, Frankfurt, Copenhagen, Dresden, etc.
+%\usetheme[block=fill,progressbar=foot,numbering=fraction]{metropolis} 
+%上は，themeをmetropolisにするときに使う．この設定にすると，NKGW先生らしいデザインになる．
+
+\usecolortheme{orchid}
+\usefonttheme{default} %select: default, professionalfonts, serif, structurebold
+\useinnertheme{default} %select: default, circles, rectangles, rounded
+\useoutertheme{default} %select:default, miniframes, infolines, split, smoothbars
+\usepackage{atbegshi} %しおりの文字化け解消
+\ifnum 42146=\euc"A4A2
+\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+\else
+\AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
+\fi
+%\setbeamercolor{title}{fg=structure, bg=} %title color
+%\setbeamercolor{frametitle}{fg=structure, bg=} %frame title color
+%\setbeamertemplate{footline}[frame number] %screen slide number
+
+\setbeamertemplate{navigation symbols}{} %変なナビゲーション記号を消す
+\setbeamertemplate{theorems}[numbered] %定理環境の番号を順に表示
+%日本語で定理環境を示したいときは，ここに[1]を追加
+
+%section毎に目次を表示
+\AtBeginSection[]{
+\begin{frame}{次のセクション}
+  \tableofcontents[currentsection]
+\end{frame}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%===和文用（とりあえずぷりアンブルに追加しておこう）===%%%
+\renewcommand{\kanjifamilydefault}{\gtdefault} % 和文既定をゴシックに変更
+\usepackage{minijs}
+\usepackage[deluxe]{otf}
+\usepackage[noalphabet]{pxchfon}
+
+\usepackage{framed}
+
+\usepackage{graphicx}
+%\usepackage[dvipsnames]{xcolor}
+\usepackage{comment}
+\usepackage{ulem}
+
+
+%%%===数式===%%%
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{bm}
+
+
+%%%===ハイパーリンク===%%%
+\usepackage{hyperref}
+\usepackage{pxjahyper}
+
+
+
+%%%===title===%%%
+\title{Beamerを使ってみよう}
+%\subtitle{}
+\author[斉藤尚]{斉藤尚} %; Sho Saitou
+\institute[FU]{福島大学 共生システム理工学類} %; Fukushima University Faculty of Symbiotic System Sciences
+\date{last updated: \today}
+%%%===logo===%%%
+
+
+%%%===本文開始===%%%
+\begin{document}
+\maketitle
+
+\begin{frame}{目次}
+    \tableofcontents
+\end{frame}
+
+\section{数式を打ってみよう}
+\begin{frame}{ブロック環境の紹介}
+  \begin{block}{普通のブロック}
+    普通のブロック．何をかいてもいいよ．
+  \end{block}
+  \begin{alertblock}{アラートブロック}
+    alertブロック．何をかいてもいいよ．
+  \end{alertblock}
+  \begin{exampleblock}{exampleブロック}
+    exampleブロック．何をかいてもいいよ．
+  \end{exampleblock}
+\end{frame}
+
+\section{定理環境を使ってみよう}
+\begin{frame}{定理環境の紹介}
+  \begin{definition}[数列の収束]
+    実数列$\{a_n\}$が$\alpha \in \mathbb{R}$に収束するとは，次がなりたつときをいう：
+    \[ \forall \varepsilon>0, \exists N \in \mathbb{N} \quad \text{s.t.} \quad n \geq N \implies |a_n - \alpha|<\varepsilon.\]
+    また，これを$\lim_{n \to \infty}a_n = \alpha$とか$a_n \to \alpha \; (n \to \infty)$とかく．
+  \end{definition}
+  \begin{theorem}
+    $\{a_n\}, \{b_n\}$を数列とし，$\lim_{n \to \infty} a_n = \alpha, \; \lim_{n \to \infty} b_n = \beta$であるとする．このとき，次がなりたつ：
+    \[ \lim_{n \to \infty} (a_n + b_n) = \alpha + \beta.\]
+  \end{theorem}
+\end{frame}
+
+\section{微分方程式のスライドを作ってみよう}
+\begin{frame}{微分方程式とは...}
+    そもそも微分方程式とはなんだろうか．当たり前ではあるが，言葉の意味を確認しておこう．
+    \begin{definition}
+        \textbf{微分方程式}とは，未知関数の微分を含んだ方程式のことである．
+    \end{definition}
+    次のスライドで，微分方程式の具体例を見てみよう．
+\end{frame}
+
+\begin{frame}{具体例}
+    \begin{example}
+        $dx/dt = x$は微分方程式．ちなみにこれを解くと$x=Ce^t$($C$は任意定数)となる．最も基本的な微分方程式．高校生でもわかる．
+    \end{example}
+    \begin{example}
+        $d^2x/dt^2 = -x$は微分方程式．ちなみにこれを解くと$x = C_1\cos x + C_2\sin x$($C_1,C_2$は任意)となる．単振動でよくみるだろう．
+    \end{example}
+    \begin{example}
+        次の微分方程式は\textbf{熱方程式}と呼ばれる．
+        \[ \frac{\partial u}{\partial t} = \Delta u.\]
+        通常初期値，境界値を設定するが，今回は省いている．
+    \end{example}
+\end{frame}
+
+
+
+\end{document}
+
+https://qiita.com/birdwatcher/items/5dd8a5f453bdc0c6940e
+http://xyoshiki.web.fc2.com/tex/beamer.html#usefonttheme
+
+[1]
+\uselanguage{japanese}
+\languagepath{japanese}
+\deftranslation[to=japanese]{Theorem}{定理}
+\deftranslation[to=japanese]{Lemma}{補題}
+\deftranslation[to=japanese]{Example}{例}
+\deftranslation[to=japanese]{Examples}{例}
+\deftranslation[to=japanese]{Definition}{定義}
+\deftranslation[to=japanese]{Definitions}{定義}
+\deftranslation[to=japanese]{Problem}{問題}
+\deftranslation[to=japanese]{Solution}{解}
+\deftranslation[to=japanese]{Fact}{事実}
+\deftranslation[to=japanese]{Proof}{証明}
+\def\proofname{証明}

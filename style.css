@@ -1,6 +1,6 @@
 /* 本文の設定 */
 body{
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 h1{
@@ -10,8 +10,8 @@ h1{
 }
 
 .heading-22 {
-    padding: .5em .7em;
-    border-left: 3px solid navy;
+    padding: 13px;
+    border-left: 3px solid navy; 
     background-color: whitesmoke;
     color: black;
 }

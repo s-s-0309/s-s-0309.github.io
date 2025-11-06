@@ -4,6 +4,8 @@ body{
 }
 
 h1{
+    margin: 10px 0;
+    padding: 10px;
     color: white;
     /* background:linear-gradient(-25deg, #fff, navy); */
     background-color:navy;
@@ -14,7 +16,7 @@ h1{
     padding: 10px;
     color: black;
     line-height: 20px;
-    border-left: 7px solid navy; 
+    border-left: 10px solid navy; 
     background-color: whitesmoke;
 }
 

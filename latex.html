@@ -13,5 +13,27 @@
 
 <h2 class="h2-main"> テンプレート</h3>
   <h3 class="h-bLine"> Beamer</h3>
-    <p> <a href="latex/beamer-oasobi-20251031.tex"> beamer-oasobi-20251031.tex</a> <a href="latex/beamer-oasobi-20251031.pdf"> 完成したpdf</a> <br>
+    <p> <a href="latex/beamer-oasobi-20251031.tex"> beamer-oasobi-20251031.tex</a> 
+        <a href="latex/beamer-oasobi-20251031.pdf"> 完成したpdf</a> <br>
     後輩にBeamerを教えるために作りました．みなさんご自由に使ってよいです．</p>
+    <p> <a href="latex/"> beamer-template.tex</a> <br>
+    テンプレを作ってみました．気分によってpackageをつど読み込んだり読み込まなかったりしていますが，基本的には講義でやったようにぷりあんぶるは整えておけばよいです．私は前々から上にあるようなテンプレを作っていたので，それを頑なに使っていますが．．．</p>
+
+<h2 class="h2-main"> 「へー」と言えるネタ</h2>
+  <h3 class="h-bLine"> ぷりあんぶるを毎回読み込むのは面倒？</h3>
+    <p> ぷりあんぶるに毎回毎回「\usepackage{hogehoge1}, \usepackage{hogehoge2},...」と入力するのは気が遠くなるでしょう．読み込むものが少ないのならそれほど苦労はしませんが，ぷりあんぶるだけで60行とかになる場合は，たとえテンプレで作っておいたぷりあんぶるをコピペしようとしても，それ自体がもう苦痛でしょう．<br>
+    ではどうすればよいのでしょうか．大事なことは，(1)mystyle.styを作る，(2)作成中のtexファイルでmysytle.styを読み込む，です．.<br>
+    自分で説明をしようと試みましたが，丁寧に書きすぎて時間を浪費しかねないことが判明したので，以下のリンクを参照してください．
+    <ul> 
+      <li> <a href="https://www.math.nagoya-u.ac.jp/~kubo/ja/latex/tips-0.html"> link</a> <br>
+        丁寧に書かれていてわかりやすいです．
+      <li> <a href="https://qiita.com/ZoneTsuyoshi/items/c87e9ea2a76b552773d2"> </a> link <br>
+        これもよいです．
+    </ul>
+    コンピュータ素人にとっては(2)が鬼門です．基本は<b> mystyle.styは使用中のtexと同じディレクトリに配置する</b>ことです．私はTeXShopというフォルダの中にnote-mathとかlecture-fukudaiといったように，フォルダを複数有しています．その場合はそのフォルダごとにmystyle.styを配置するのは面倒です．そんなときに，<b> 直接参照</b>が役立ちます．これはスマートではありませんが，そんなのは気にしないという人はそれでよいと思います．<br>
+    私の場合は「/Users/shosaitou/Documents/TeXShop/tex-template/mystyle」で通ります．Windowsの人はパスをそのままコピペすれば多分大丈夫です(C:は消したほうがよさそう)．
+    </p>
+    <p> これで毎回毎回ぷりあんぶるをコピペする必要がなくなります．texのソースコードを人にあげるということはあまりないでしょうし，自分しか見ないわけですから，そういう意味では，これでいいのかもしれません．ちなみに，直接参照で書いたソースコードを他人がコンパイルした場合は，確実にコンパイルエラーを吐きます．自明に，パスは人それぞれだからです．
+    </p>
+    <p> わからないことはchatGPTに聞いてください．そのほうが確実かもしれません．</p>
+

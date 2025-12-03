@@ -1,6 +1,6 @@
 /* 本文の設定 */
 body{
-    margin: auto;
+    margin: 50px;
     background-color: white;
 }
 
@@ -13,7 +13,7 @@ body{
 
 .h2-main {
     margin: 10px 0;
-    padding: 10px;
+    padding-left: 10px;
     color: black;
     line-height: 20px;
     border-left: 10px solid navy; 

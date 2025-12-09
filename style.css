@@ -1,14 +1,80 @@
 /* 本文の設定 */
+html{
+    background-color: whitesmoke;
+}
+
 body{
+    margin: 80px;
+    padding: 40px;
+    background-color: white;
+}
+
+h1{
+    text-align: center;
+}
+
+h2{
+    border-bottom: thin dotted black; 
+    /* 太さ:thin, midium, thick */
+    /* 1本線:solid, 点線:dotted, 波線:dashed, 2本線:double, 立体的に窪んだ線:groove, 立体的に隆起した線:ridge, 内側全体がくぼんだ線:inset, 内側全体が隆起した線:outset */
+}
+
+p{
+    margin-left: 30px;
+}
+
+/* .a-header{
+    padding: 10px; 
+    margin-bottom: 10px; 
+    border: 1px solid #333333; 
+    background-color: gainsboro;
+    text-decoration: none;
+} */
+
+a:link{
+    color: blue;
+    text-decoration: none;
+}
+   
+a:visited{
+    color: blue;
+    text-decoration: underline;
+}
+   
+a:hover{
+    color: red;
+    text-decoration: red;
+}
+   
+a:active {
+    color: #FF0000;
+    text-decoration: none;
+}
+
+/* 箇条書き */
+ul{
+    margin-left: 40px;
+}
+ol{
+    margin-left: 40px;
+}
+
+/* details */
+details{
+    margin-left: 40px;
+}
+
+
+/*------------------昔使っていたスタイル------------------*/
+/* body{
     background-color: white;
 }
 
 h1{
     padding: 10px;
     color: white;
-    /* background:linear-gradient(-25deg, #fff, navy); */
     background-color:navy;
-}
+} 
 
 .h2-main {
     margin: 10px 0;
@@ -27,4 +93,6 @@ h1{
     border-top: 0;
     border-bottom: 1px dotted black;
     border-left: 5px solid navy;
-}
+} 
+*/
+

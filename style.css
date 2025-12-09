@@ -1,5 +1,7 @@
 /* 本文の設定 */
 body{
+    margin: 80px;
+    padding: 20px;
     background-color: white;
 }
 

@@ -1,7 +1,20 @@
+html{
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+
 /*============headerの設定============*/
 header{
     text-align: center;
-    background-color: lightgrey;
+    background-color: white;
     position: relative;
     align-items: center;
     margin: 0;
@@ -17,7 +30,7 @@ header{
 *{box-sizing: border-box;}
 
 ul.gnav-navi-1{
-    background: gainsboro;
+    background: lightgray;
     padding: 0;
     text-align: center;
 }
@@ -73,6 +86,12 @@ h1{
     text-align: center;
 }
 
+.h2-index{
+    margin: 0;
+    padding: 0 0.5em;
+    border-bottom: 1px solid black;
+}
+
 p{
     margin-left: 1.5em;
 }
@@ -121,3 +140,15 @@ a:active {
     color: #FF0000;
     text-decoration: none;
 }
+
+
+
+
+
+
+/*ーーーーーーーーーーーーーーー【cssの基本的な事柄】ーーーーーーーーーーーーーーーーーーーーーー
+太さ:thin, midium, thick 
+1本線:solid, 点線:dotted, 波線:dashed, 2本線:double, 立体的に窪んだ線:groove, 立体的に隆起した線:ridge, 内側全体がくぼんだ線:inset, 内側全体が隆起した線:outset 
+
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー*/

@@ -68,8 +68,10 @@ p{
 
 /* 箇条書き */
 ul{
-    margin-left: 1.5em;
+    margin: 0;
+    padding: 0;
 }
+
 ol{
     margin-left: 1.5em;
 }

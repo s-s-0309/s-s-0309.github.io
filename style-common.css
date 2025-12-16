@@ -1,3 +1,4 @@
+/*============headerの設定============*/
 header{
     text-align: center;
     background-color: lightgrey;
@@ -59,4 +60,14 @@ footer{
 h1{
     padding-top: 0.5em;
     text-align: center;
+}
+
+/* 囲みの設定 */
+/* リンク https://saruwakakun.com/html-css/reference/box */
+.box-normal{
+    border: solid 1px black;
+}
+
+.box-backcolor{
+    background-color: whitesmoke;
 }

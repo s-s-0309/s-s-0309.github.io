@@ -1,67 +1,18 @@
 /* 本文の設定 */
-html{
+/*html{
     background-color: whitesmoke;
-}
+} */
 
 body{
+    padding: 0;
     background-color: white;
 }
 
-h1{
-    padding-top: 0.5em;
-    text-align: center;
-}
-
 h2{
+    padding: 0 0.5em;
     border-bottom: thin dotted black; 
-    padding-left: 8px;
     /* 太さ:thin, midium, thick */
     /* 1本線:solid, 点線:dotted, 波線:dashed, 2本線:double, 立体的に窪んだ線:groove, 立体的に隆起した線:ridge, 内側全体がくぼんだ線:inset, 内側全体が隆起した線:outset */
-}
-
-p{
-    margin-left: 10px;
-}
-
-/* .a-header{
-    padding: 10px; 
-    margin-bottom: 10px; 
-    border: 1px solid #333333; 
-    background-color: gainsboro;
-    text-decoration: none;
-} */
-
-a:link{
-    color: blue;
-    text-decoration: none;
-}
-   
-a:visited{
-    color: blue;
-    text-decoration: underline;
-}
-   
-a:hover{
-    color: red;
-    text-decoration: red;
-}
-   
-a:active {
-    color: #FF0000;
-    text-decoration: none;
-}
-
-/* 箇条書き */
-ul{
-    margin-left: 15px;
-}
-ol{
-    margin-left: 15px;
-}
-
-/* details */
-details{
-    margin-left: 15px;
 }
 
 

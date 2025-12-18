@@ -84,7 +84,7 @@ h2{
     margin: 0.2 0 0  0.2em;
     padding: 0 0.5em;
     border-bottom: 1px dotted black;
-    border-left: 3px solid lightgray;
+    border-left: 5px solid black;
 }
 
 h3{
@@ -95,6 +95,12 @@ h3{
 p{
     margin-left: 1.5em;
 }
+
+p.center {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+}  
 
 /* 箇条書き */
 ul{

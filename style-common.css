@@ -1,11 +1,5 @@
-html{
-    margin: 0;
-    padding: 0;
-    background-color: whitesmoke;
-}
-
 body{
-    margin: 0;
+    margin: 0 5px;
     padding: 0;
     background-color: white;
 }
@@ -87,9 +81,9 @@ h1{
 }
 
 .h2-index{
-    margin: 0;
-    padding: 0 0.5em;
-    border-bottom: 1px solid black;
+    margin: 0 0.5em;
+    padding: 0 1em;
+    border-bottom: 1px dotted black;
 }
 
 p{

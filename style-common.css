@@ -74,7 +74,7 @@ footer{
     right: 0;
 }
 
-/* h1 */
+/* 見出しの設定 */
 h1{
     padding-top: 0.5em;
     text-align: center;
@@ -84,6 +84,7 @@ h2{
     margin: 0.2 0 0  0.2em;
     padding: 0 0.5em;
     border-bottom: 1px dotted black;
+    border-left: 3px solid lightgray;
 }
 
 h3{
@@ -115,7 +116,7 @@ details{
     border: solid 1px black;
 }
 
-.box-backcolor{
+.box-shaded{
     background-color: whitesmoke;
 }
 

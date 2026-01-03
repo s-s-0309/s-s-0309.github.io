@@ -1,49 +1,80 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style-common.css">
-  <title>B3 joint seminar</title>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+    <title>Webpage of S.S</title>
+
+    <!-- reset CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.css">
+
+    <!-- style.css -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+    <!-- math jax (応用数理解析セミナーから拝借) -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
+    </script>
+
 </head>
 
-<body> <!--本文開始-->
+<body>
 
-<!-- header -->
-<header>
-  <h1>B3合同ゼミ</h1>
-  <nav>
-      <ul class="gnav-navi-1">
-          <li> <a href="index.html">ホーム</a></li>
-          <li> <a href="zemi.html">ゼミ</a></li>
-          <li> <a href="math.html">数学</a></li>
-          <li> <a href="exam-graduate.html">大学院入試</a></li>
-          <li> <a href="latex.html">LaTeX</a></li>
-      </ul>
-  </nav>
-</header>
+    <!-- header -->
+    <header>
+        <h1>
+            <!-- 福島大学 理工学類 数学系 -->
+            <a href="index.html">B3合同セミナー</a>
+        </h1>
+        <nav>
+            <ul class="header-menu">
+                <li><a href="seminar.html">記録</a></li>
+                <li><a href="math.html">数学</a></li>
+                <li><a href="">大学院入試</a></li>
+                <li><a href="">LaTeX</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <!-- main -->
+    <main>
+        <section>
+            <div class="index">
+                <div class="sidemenu">
+                    <p>過去のお知らせ</p>
+                        <ul>
+                            <li>使い道未定</li>
+                        </ul>
+                </div>
+                <div class="inform">
+                    <h1>お知らせ</h1>
+                    <ul>
+                        <li>2026年1月3日 <br>
+                        ホームページを一新しました．見た目が変わっただけです．</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
 
-<h2>お知らせ</h2>
-<ul>
-  <li>
-    <p>
-      最近ちょくちょく見た目が変わっていますが，中身は大して変わっていません．<br>
-      こだわりが強い人間なことに加えて，あれこれ試して納得するレイアウトとデザインにするのが好きなので，それをこのHPにも反映させています．<br>
-      いろんなサイトを見て，理想に近づけています．例えば次は参考になっています：
-      <ul>
-        <li><a href="http://www.math.tohoku.ac.jp/~fujie/main.html">藤江先生(東北大)のHP</a></li>
-      </ul>
-    </p>
-  </li>
-</ul>
-
-
-
-<!-- footer -->
-<footer>
-  <p>© All rights reserved by Sho Saitou</p>
-</footer>
+    <!-- footer -->
+    <footer>
+        <p>© All rights reserved by S.S</p>
+    </footer>
 
 </body>
+
 </html>

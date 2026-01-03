@@ -1,140 +1,122 @@
-body{
+html {
+    font-family: "Noto Sans JP", sans-serif;
+    font-family: "Google Sans", sans-serif;
+}
+
+body {
+    width: 90%;
     margin: 0 auto;
-    padding: 0;
-    background-color: white;
+    /* max-width: 1120px; */
+    /* position: relative; */
 }
 
-
-/*============headerの設定============*/
-header{
-    text-align: center;
-    background-color: white;
-    position: relative;
+.flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0; 
 }
 
-/*============grobal-navigationの設定============*/
-/* https://kisopro.net/blog/programming/global-navigation/ */
-*{box-sizing: border-box;}
-
-ul.gnav-navi-1{
-    background: lightgray;
-    padding: 0;
+/* header */
+header {
+    padding: 40px 0 20px 0;
+}
+header h1 {
+    padding: 20px 10px;
+    font-size: 32px;
     text-align: center;
+    /* background-color: cornflowerblue; */
 }
 
-ul.gnav-navi-1 li{
-    display: inline-block;
-    padding: 0 3em;
-}
-
-ul.gnav-navi-1 li a{
-    display: block;
-    padding: 0;
-    color: black;
-    text-decoration: none;
-}
-
-ul.gnav-navi-1 li:hover{
-    background: whitesmoke;
-}
-
-ul.gnav-navi-1 a::first-line{
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.nav{
-    margin: 0;
+ul.header-menu {
+    margin: 20px 0;
     padding: 0;
     list-style: none;
-}
 
-.nav li{
-    display: inline-block;
-    margin-right: 1em;
-}
-
-/*============footerの設定============*/
-footer{
-    text-align: center;
-    background-color: lightgray;
-    position: relative;
-    align-items: center;
-    margin: 2em 0;
-    padding: 1em 0;
-    top: 0;
-    left: 0;
-    right: 0;
-}
-
-/* 見出しの設定 */
-h1{
-    padding-top: 0.5em;
-    text-align: center;
-}
-
-h2{
-    margin: 0.2 0 0  0.2em;
-    padding: 0 0.5em;
-    border-bottom: 1px dotted black;
-    border-left: 5px solid black;
-}
-
-h3{
-    margin: 0.2 0 0  0.2em;
-    padding: 0 1em;
-}
-
-/* 箇条書き */
-ul{
-    margin-top: 1.5em;
-}
-
-ol{
-    margin-left: 1.5em;
-}
-
-/* details */
-details{
-    margin-left: 1.5em;
-}
-
-/* 囲みの設定 */
-/* リンク https://saruwakakun.com/html-css/reference/box */
-.box-normal{
-    border: solid 1px black;
-}
-
-.box-shaded{
+    display: flex;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     background-color: whitesmoke;
 }
 
-/* a の設定 */
-a:link{
-    color: blue;
+/* li を均等割り */
+ul.header-menu li {
+    flex: 1;                 /* ← 均等幅の核心 */
+}
+
+/* a を li 全体に広げる */
+ul.header-menu a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px 0;
+    font-size: 20px;
     text-decoration: none;
+    color: inherit;
+
+    transition: background-color 0.3s, color 0.3s;
 }
-   
-a:visited{
-    color: blue;
-    text-decoration: underline;
-}
-   
-a:hover{
+
+/* li 領域に触れた瞬間に反応 */
+ul.header-menu li:hover a {
+    background-color: #eaeaea;
     color: red;
-    text-decoration: red;
 }
-   
-a:active {
-    color: #FF0000;
-    text-decoration: none;
+
+
+/* main */
+main {
+    padding: 20px 0;
+}
+
+.index {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* inform */
+.inform {
+    width: 70%;
+    position: relative;
+}
+.inform h1 {
+    padding-bottom: 20px;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: left;
+}
+.inform li {
+    margin: 0 40px 20px 40px;
+    list-style-type: square;
+}
+
+/* sidemenu */
+.sidemenu {
+    width: 25%;
+    position: relative;
+}
+.sidemenu p { 
+    padding: 5px 5px;
+}
+.sidemenu li {
+    padding: 15px;
+    border-bottom: 1px solid black;
+    background-color: whitesmoke;
+}
+.sidemenu details {
+    padding: 15px;
+    border-bottom: 1px solid black;
+    background-color: whitesmoke;
+}
+
+
+/* footer */
+footer {
+    padding: 30px;
+    text-align: center;
+    background-color: whitesmoke;
 }
 
 

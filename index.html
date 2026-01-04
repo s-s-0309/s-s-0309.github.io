@@ -73,6 +73,22 @@
     <!-- footer -->
     <footer>
         <p>© All rights reserved by S.S</p>
+        <script type="text/javascript">
+            var nowdate = new Date();
+            var modified = new Date(document.lastModified);
+            var year = modified.getFullYear();
+            var mon  = modified.getMonth() ;
+            var monchars = new Array( "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", );
+            var moneng = monchars[ mon ];
+            var date = modified.getDate();
+            var week = modified.getDay();
+            var weekchars = new Array( "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" );
+            var todayweek = weekchars[ week ];
+            var hour = modified.getHours();
+            var min  = modified.getMinutes();
+            var sec  = modified.getSeconds();
+            document.write("Last  modified: "+ todayweek + " " + moneng + " " + date + " " + hour + ":" + min + ":" + sec + " JST " + year);
+        </script>
     </footer>
 
 </body>

@@ -99,18 +99,18 @@ a:hover{
 }
 
 
-/* inform */
-.inform {
+/* mainmenu */
+.mainmenu {
     width: 70%;
     position: relative;
 }
-.inform h1 {
+.mainmenu h1 {
     padding-bottom: 20px;
     font-size: 24px;
     font-weight: 400;
     text-align: left;
 }
-.inform li {
+.mainmenu li {
     margin: 0 40px 20px 40px;
     list-style-type: square;
 }
@@ -132,6 +132,7 @@ a:hover{
     padding: 15px;
     border-bottom: 1px solid black;
     background-color: whitesmoke;
+    list-style-type: none;
 }
 
 

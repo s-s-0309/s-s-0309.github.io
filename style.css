@@ -64,6 +64,12 @@ ul.header-menu li:hover a {
     color: red;
 }
 
+/* footer */
+footer {
+    padding: 30px;
+    text-align: center;
+    background-color: whitesmoke;
+}
 
 /* main */
 main {
@@ -121,12 +127,13 @@ a:hover{
     position: relative;
 }
 .sidemenu p { 
-    padding: 5px 5px;
+    padding: 5px 15px;
 }
 .sidemenu li {
     padding: 15px;
     border-bottom: 1px solid black;
     background-color: whitesmoke;
+    list-style-type: none;
 }
 .sidemenu details {
     padding: 15px;
@@ -135,13 +142,16 @@ a:hover{
     list-style-type: none;
 }
 
+.exam-table {
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  .exam-table th,
+  .exam-table td {
+    border: 1px solid black;
+  }
+  
 
-/* footer */
-footer {
-    padding: 30px;
-    text-align: center;
-    background-color: whitesmoke;
-}
 
 
 

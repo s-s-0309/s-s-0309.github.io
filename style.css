@@ -145,13 +145,19 @@ a:hover{
 .exam-table {
     border-collapse: collapse;
     margin: 0 auto;
-  }
-  .exam-table th,
-  .exam-table td {
+}
+.exam-table th,
+.exam-table td {
     border: 1px solid black;
-  }
-  
+}
 
+.details-notes{
+    margin: 20px 0;
+}
+.details-notes[open]{
+    padding: 10px;
+    background-color: aliceblue;
+}
 
 
 

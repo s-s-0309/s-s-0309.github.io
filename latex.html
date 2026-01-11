@@ -1,49 +1,87 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
-  <title> LaTeX</title>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+    <title>Webpage of S.S</title>
+
+    <!-- reset CSS -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.css"> -->
+
+    <!-- style.css -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+    <!-- math jax (応用数理解析セミナーから拝借) -->
+    <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+          }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
 </head>
 
-<body> <!--本文開始-->
-<header>
-    <h1>LaTeX</h1>
-    <nav>
-        <ul class="gnav-navi-1">
-            <li> <a href="index.html">ホーム</a></li>
-            <li> <a href="zemi.html">ゼミ</a></li>
-            <li> <a href="math.html">数学</a></li>
-            <li> <a href="exam-graduate.html">大学院入試</a></li>
-            <li> <a href="latex.html">LaTeX</a></li>
-        </ul>
-    </nav>
-</header>
+<body>
 
-<h2> テンプレート</h3>
-  <h3> Beamer</h3>
-    <p> <a href="latex/beamer-oasobi-20251031.tex"> beamer-oasobi-20251031.tex</a> 
-        <a href="latex/beamer-oasobi-20251031.pdf"> 完成したpdf</a> <br>
-    後輩にBeamerを教えるために作りました．みなさんご自由に使ってよいです．</p>
-    <p> <a href="latex/"> beamer-template.tex</a> <br>
-    テンプレを作ってみました．気分によってpackageをつど読み込んだり読み込まなかったりしていますが，基本的には講義でやったようにぷりあんぶるは整えておけばよいです．私は前々から上にあるようなテンプレを作っていたので，それを頑なに使っていますが．．．</p>
+    <!-- header -->
+    <header>
+        <h1>
+            <!-- 福島大学 理工学類 数学系 -->
+            <a href="index.html">B3合同セミナー</a>
+        </h1>
+        <nav>
+            <ul class="header-menu">
+                <li><a href="seminar.html">記録</a></li>
+                <li><a href="math.html">数学</a></li>
+                <li><a href="graduate.html">大学院入試</a></li>
+                <li><a href="latex.html">LaTeX</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<h2> 「へー」と言えるネタ</h2>
-  <h3> ぷりあんぶるを毎回読み込むのは面倒？</h3>
-    <p> ぷりあんぶるに毎回毎回「\usepackage{hogehoge1}, \usepackage{hogehoge2},...」と入力するのは気が遠くなるでしょう．読み込むものが少ないのならそれほど苦労はしませんが，ぷりあんぶるだけで60行とかになる場合は，たとえテンプレで作っておいたぷりあんぶるをコピペしようとしても，それ自体がもう苦痛でしょう．<br>
-    ではどうすればよいのでしょうか．大事なことは，(1)mystyle.styを作る，(2)作成中のtexファイルでmysytle.styを読み込む，です．.<br>
-    自分で説明をしようと試みましたが，丁寧に書きすぎて時間を浪費しかねないことが判明したので，以下のリンクを参照してください．
-    <ul> 
-      <li> <a href="https://www.math.nagoya-u.ac.jp/~kubo/ja/latex/tips-0.html"> link</a> <br>
-        丁寧に書かれていてわかりやすいです．
-      <li> <a href="https://qiita.com/ZoneTsuyoshi/items/c87e9ea2a76b552773d2"> </a> link <br>
-        これもよいです．
-    </ul>
-    コンピュータ素人にとっては(2)が鬼門です．基本は<b> mystyle.styは使用中のtexと同じディレクトリに配置する</b>ことです．私はTeXShopというフォルダの中にnote-mathとかlecture-fukudaiといったように，フォルダを複数有しています．その場合はそのフォルダごとにmystyle.styを配置するのは面倒です．そんなときに，<b> 直接参照</b>が役立ちます．これはスマートではありませんが，そんなのは気にしないという人はそれでよいと思います．<br>
-    私の場合は「/Users/shosaitou/Documents/TeXShop/tex-template/mystyle」で通ります．Windowsの人はパスをそのままコピペすれば多分大丈夫です(C:は消したほうがよさそう)．
-    </p>
-    <p> これで毎回毎回ぷりあんぶるをコピペする必要がなくなります．texのソースコードを人にあげるということはあまりないでしょうし，自分しか見ないわけですから，そういう意味では，これでいいのかもしれません．ちなみに，直接参照で書いたソースコードを他人がコンパイルした場合は，確実にコンパイルエラーを吐きます．自明に，パスは人それぞれだからです．
-    </p>
-    <p> わからないことはchatGPTに聞いてください．そのほうが確実かもしれません．</p>
+    <main class="index">
+        <!-- <div class="index"> -->
+            <div class="sidemenu"> <!--目次-->
+                <p>目次</p>
+                <ul>
+                    <li><a href="good-sentence">より良い文章に向けて</a></li>
+                    <li><a href="beamer">Beamer</a></li>
+                </ul>
+            </div> <!--目次終わり-->
+            
+            <div class="mainmenu"> <!--メインコンテンツ-->
+                <h2 id="good-sentence">より良い文章に向けて</h2>
+                <ul>
+                    <!-- <li><a href=""></a></li> -->
+                    <li><a href="https://mathlandscape.com/category/latex/">数学の景色</a><br>
+                        わかりやすい．これ見ておけば基本的にバチは当たらない．</li>
+                </ul>
+            <h2 id="beamer">Beamer</h2>
+                <ul>
+                    <li><a href="https://qiita.com/alpaca-honke/items/bc2ba5a8a68ba5eb3b5a">metropolisテーマについて</a></li>
+                    <li><a href="https://qiita.com/rockwell/items/eddd6e544498bacc4c5a">metropolisテーマについて</a><br>
+                        tipsがいろいろ書いてある．</li>
+                </ul>
+            </div> <!--メインコンテンツ終わり-->
+        <!-- </div> -->
+        
+    </main>
 
+    <!-- footer -->
+    <footer>
+        <p>© All rights reserved by S.S</p>
+    </footer>
+
+</body>
+</html>

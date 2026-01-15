@@ -6,50 +6,45 @@ html {
 body {
     width: 90%;
     margin: 0 auto;
-    /* max-width: 1120px; */
-    /* position: relative; */
+
 }
-  
-.flex {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-}
+
 
 /* header */
 header {
-    padding: 40px 0 20px 0;
+    padding: 40px 0 20px;
 }
 header h1 {
-    padding: 20px 10px;
     font-size: 32px;
     text-align: center;
     /* background-color: cornflowerblue; */
 }
+header a {
+    text-decoration: none;
+    color: inherit;
+}
 
-ul.header-menu {
+
+.header-menu {
+    display: flex;
     margin: 20px 0;
     padding: 0;
     list-style: none;
-
-    display: flex;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     background-color: whitesmoke;
 }
 
 /* li を均等割り */
-ul.header-menu li {
+.header-menu li {
     flex: 1;                 /* ← 均等幅の核心 */
 }
 
 /* a を li 全体に広げる */
-ul.header-menu a {
+.header-menu a {
     display: flex;
     justify-content: center;
     align-items: center;
-
     padding: 15px 0;
     font-size: 20px;
     text-decoration: none;
@@ -59,7 +54,7 @@ ul.header-menu a {
 }
 
 /* li 領域に触れた瞬間に反応 */
-ul.header-menu li:hover a {
+.header-menu li:hover a {
     background-color: #eaeaea;
     color: red;
 }
@@ -72,14 +67,15 @@ footer {
 }
 
 /* main */
-main {
+/* main {
     padding: 20px 0;
-}
+} */
 
 .index {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap;  */
+    height: 100vh;
 }
 
 p {
@@ -105,41 +101,59 @@ a:hover{
 }
 
 
-/* mainmenu */
+/* mainmenu (PC) */
 .mainmenu {
     width: 70%;
-    position: relative;
+    height: 100vh;
+    overflow-y: auto;
+    /* position: relative; */
 }
 .mainmenu h1 {
     padding-bottom: 20px;
     font-size: 24px;
     font-weight: 400;
-    text-align: left;
 }
+.mainmenu h2 {
+    font-size: 20px;
+    font-weight: 400px;
+    border-bottom: 2.5px dotted black;
+}
+/* .mainmenu ul {
+    padding-left: 20px;
+} */
 .mainmenu li {
-    margin: 0 40px 20px 0;
+    /* margin-bottom: 20px; */
     list-style-type: square;
 }
 
-/* sidemenu */
+/* sidemenu (PC) */
 .sidemenu {
     width: 25%;
-    position: relative;
+    position: sticky;
+    top: 0;
+    height: 100vh;
 }
 .sidemenu p { 
     padding: 5px 15px;
 }
+.sidemenu ul {
+    padding-left: 20px;
+}
 .sidemenu li {
-    padding: 15px;
+    padding: 10px;
     border-bottom: 1px solid black;
     background-color: whitesmoke;
     list-style-type: none;
 }
 .sidemenu details {
-    padding: 15px;
+    padding: 15px ;
     border-bottom: 1px solid black;
     background-color: whitesmoke;
     list-style-type: none;
+}
+.sidemenu summary {
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .exam-table {
@@ -160,6 +174,43 @@ a:hover{
 }
 
 
+
+
+/* =================================================
+   スマホ用レイアウト
+   ================================================= */
+   @media (max-width: 768px) {
+
+    body {
+        width: 100%;
+        margin: 0;
+    }
+
+    .index {
+        display: block;
+        height: auto;
+    }
+
+    /* sidemenu を折りたたみ */
+    .sidemenu {
+        width: 100%;
+        position: static;
+        height: auto;
+    }
+
+    .sidemenu details {
+        background: whitesmoke;
+        border-bottom: 1px solid black;
+    }
+
+    /* mainmenu は通常スクロール */
+    .mainmenu {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        padding: 20px;
+    }
+}
 
 
 

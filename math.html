@@ -1,57 +1,112 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
-  <title> 数学</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- MathJax-->
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Webpage of S.S</title>
+
+    <!-- reset CSS -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.css"> -->
+
+    <!-- style.css -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+    <!-- math jax -->
+    <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+          }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 </head>
 
-<body> <!--本文開始-->
+<body>
 
-<header>
-    <h1>数学</h1>
-    <nav>
-        <ul class="gnav-navi-1">
-            <li> <a href="index.html">ホーム</a></li>
-            <li> <a href="zemi.html">ゼミ</a></li>
-            <li> <a href="math.html">数学</a></li>
-            <li> <a href="exam-graduate.html">大学院入試</a></li>
-            <li> <a href="latex.html">LaTeX</a></li>
-        </ul>
-    </nav>
-</header>
+    <!-- header -->
+    <header>
+        <h1>
+            <!-- 福島大学 理工学類 数学系 -->
+            <a href="index.html">B3合同セミナー</a>
+        </h1>
+        <nav>
+            <ul class="header-menu">
+                <li><a href="seminar.html">記録</a></li>
+                <li><a href="math.html">数学</a></li>
+                <li><a href="booklist.html">本紹介</a></li>
+                <li><a href="graduate.html">大学院入試</a></li>
+                <li><a href="latex.html">LaTeX</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<h2> 講義</h2>
-  <h3> 常微分方程式論(2025年前期)</h3>
-    <p> 昔講義ノートを自分なりにまとめたものがあるので，ここで公開します．<br>
-    なお，2回目と12回目と13回目はだるくなって書いていませんが，ここを読まなくても大事そうな部分は詰まっているので多分大丈夫です．</p>
-    <p> <a href="ODE2025/ODE2025.pdf"> 講義ノート</a> </p>
-  
-  <h3> 論理記号</h3>
-    <p> 2025年にN先生の研究室のB3ゼミで使ったテキスト：数学の論理と言葉，朝倉書店 
-    <a href="https://www.asakura.co.jp/detail.php?book_code=11751&srsltid=AfmBOorDbE2o3YDURrKBCymo0JIyZyKX5kiEMyuGdSgmAmDzgdfLTQZ_"> 
-      購入はこちらから</a> </p>
-  
-  <h3> 位相空間論</h3>
-    <p> 位相空間論で習うことは，基本的にどこの分野に進んでも出てきます．初見では理解し難い概念でも，なんとかして習得する必要があります．<br>
-    B3までにはなんとかしたいので，ここに記録をしていきます．(11/1)</p>
-      <ul> 
-        <li> <a href=""> コンパクト</a> </li>
-        <li> <a href=""> 連結</a> </li>
-        <li> <a href=""> ハウスドルフ</a> </li>
-        <li> <a href=""> 完備距離空間</a> </li>
-      </ul>
+    <!-- main -->
+    <main>
+        <div class="index">
+            <div class="sidemenu">
+                <p>目次</p>
+                    <ul>
+                        <li><a href="#lecture">講義</a></li>
+                        <li><a href="#private">私用</a></li>
+                    </ul>
+            </div>
+            <div class="mainmenu">
+                <h2 id="lecture">講義</h2>
+                <p>今のところなし．2025年後期からは基本的にセミナーが主になりました．その記録は<a href="seminar.html">ここ</a>にあります．</p>
 
-  <h2> 未分類</h2>
-    <ul>
-      <li> <a href="math/limsup.pdf"> 上極限と下極限</a></li>
-      <li> <a href="math/quotient-set.pdf"> 商集合</a></li>
-      <li> <a href=""> </a></li>
-      <li> <a href=""> </a></li>
-      <li> <a href=""> </a></li>
-    </ul>
-  
+                <hr>
+
+                <h2 id="private">私用</h2>
+                <h3>位相空間論</h3>
+                <p>位相の学習にはだいぶ悩まされました(そもそも何を知っておかねばならないかすらわからなかった)．おそらく研究室同期もそうだと思われるので，その人たちの学習の助けになるかつ自分の理解度チェックのために，$\LaTeX$で各トピックスをまとめました．</p>
+                <ul>
+                    <li><a href="">位相の定義・写像の連続性</a></li>
+                    <li><a href="">連結</a></li>
+                    <li><a href="">コンパクト</a></li>
+                    <li><a href="">ハウスドルフ</a></li>
+                    <li><a href="">完備距離空間</a></li>
+                </ul>
+
+                <h3>ルベーグ積分論</h3>
+                <p>数学科の講義で学生からの人気があまりないらしいです．独習・概念の難易度が同時期(ルベーグ積分と多様体は大体B3前期に配置される)に開講される科目に比べて難しいのが原因でしょう．私は解析専攻の予定なので取り組まざるを得ませんでしたが，結構苦労しました．理解度チェックもこめて$\LaTeX$で各トピックスをまとめました．<br>
+                ルベーグ積分は積分の定義に至るまでの過程で流派があって，(1)一般の完全加法族から出発する，(2)ユークリッド空間$\mathbb{R}^d$に限定して出発する，の2通りがあります．私は(1)の本で勉強したので，以下はその流派に概ね乗っ取ったpdfになります(概ねと言っているのは，(2)の流派の本も参照しつつ書いているからです)．</p>
+                <ul>
+                    <li><a href="">Part1(数学科前期で取り扱う)</a>大体収束定理までです．</li>
+                    <li><a href="">Part2(数学科後期の中盤まで取り扱う)</a>大体Fubiniの定理までです．中盤以降は教員の趣味によりますが，Radon-Nikodymの定理とか，$L^p$空間の話になります．</li>
+                    <li><a href="">Part3(応用?)</a>先ほども述べたように，Radon-Nikodymの定理とか，$L^p$空間の話になります．</li>
+                </ul>
+
+                <h3>関数解析</h3>
+                <p>関数解析を勉強して個人的によくわからなかったトピックについて$\LaTeX$でまとめました．</p>
+                <ul>
+                    <li><a href="">BaireのCategory定理</a>これは位相空間論に配置してもよかったかも</li>
+                    <li><a href="">Schauder基底</a></li>
+                    <li><a href="">一様有界性</a></li>
+                    <li><a href="">Hahn-Banachの定理</a></li>
+                    <li><a href="">閉グラフ定理</a></li>
+                    <li><a href="">Rieszの表現定理</a></li>
+                    <li><a href="">弱収束まわり</a></li>
+                </ul>
+                
+            </div>
+        </div>
+    </main>
+
+    <!-- footer -->
+    <footer>
+        <p>© All rights reserved by S.S</p>
+    </footer>
+
+</body>
+
+</html>

@@ -117,9 +117,27 @@
                     </details>
                     <details name="notes" class="details-notes">
                         <summary>1/21(Wed) speaker: M.Fujita</summary>
+                        <h4>「全単射であるから...」(中川先生)</h4>
+                        <p>$f: A \to B$の逆写像を考えるとき「$f$が全単射であるから，任意の$b \in B$に対して$a \in A$がただ一つ存在して，$b=f(a)$となるから，$f(a)$に$a$を対応させて...」とあるが，少し言葉が足りないだろう．例えば，次のようにするとよい： <br>
+                        $f$が全射であるから，任意の$b \in B$に対して，ある$a \in A$が存在して$b=f(a)$となる．$f$が単射であるから，$b=f(a), \forall b \in B$をみたすような$a$がただ一つ存在することが保証される．したがって，$b=f(a)$に対して$a$を対応させた写像$f^{-1}: B \to A$を考えることができる．</p>
                     </details>
                     <details name="notes" class="details-notes">
-                        <summary>1/23(Fri) speaker: S.Saitou</summary>
+                        <summary>【New】1/23(Fri) speaker: S.Saitou</summary>
+                        <h4>$\lim_{x \to a} xD(x), \; a\neq 0$が存在しないこと</h4>
+                        <p>ここはセミナー中に証明したが，いまいちみんなの反応が良くなかったし，そもそも私も少し不安になりながら説明してしまった．セミナー後まとまった回答が書けたので，以下に示しておく：</p>
+                        <p>【証明】背理法により示す．<br>
+                        $\alpha = \lim_{x \to a} xD(x)$と仮定する．$\varepsilon>0$は任意であるから，$\varepsilon = |a/2|$として，それに対してある$\delta>0$が存在して
+                        \[ 0<|x-a|<\delta \implies |xD(x)-\alpha| < |a|/2\]
+                        となる．定理2.4(開区間に有理数と無理数が存在する)より，$0<|x-a|<\delta$に$q \in \mathbb{Q}$と$r \in \mathbb{R}\setminus\mathbb{Q}$が存在する．<br>
+                        \[ 0<|q-a|<\delta \implies |qD(q)-\alpha| = |q - \alpha| < |a|/2\]
+                        であり
+                        \[ 0<|r-a|<\delta \implies |rD(r)-\alpha| = |\alpha| < |a|/2\]
+                        となる．したがって
+                        \[ 0<|x-a|<\delta \implies |x| \leq |x-\alpha| + |\alpha| < |a|/2 + |a|/2 = |a|\]
+                        すなわち$0<|x-a|<\delta \implies |x| < |a| \quad \cdots (\ast)$である．
+                        (1)$a > 0$のとき，$x \in (a, a+\delta)$をとってくると，$0< a < x$であり，両辺絶対値をとると，$|a| < |x|$となり，$(\ast)$に矛盾する．<br>
+                        (2)$a < 0$のとき，$x \in (a-\delta,a)$をとってくると，$x < a < 0$であり，両辺絶対値をとると，$|a| < |x|$となり，$(\ast)$に矛盾する．<br>
+                        よって(1),(2)より，$\lim_{x \to a} xD(x)$は存在しない．</p>
                     </details>
                     <details name="notes" class="details-notes">
                         <summary>1/28(Wed)speaker: M.Kakimoto</summary>

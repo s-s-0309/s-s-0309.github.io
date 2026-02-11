@@ -169,10 +169,10 @@ a:hover{
     border: 1px solid black;
 }
 
-.details-notes{
+div.details-notes detail{
     margin: 20px 0;
 }
-.details-notes[open]{
+div.details-notes detail[open]{
     padding: 10px;
     background-color: aliceblue;
 }

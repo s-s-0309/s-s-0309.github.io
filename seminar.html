@@ -75,7 +75,8 @@
                     <p> <a href=""> note-20251217</a> speaker: S.Saitou</p>
                     <p> <a href=""> note-20251219</a> speaker: M.Kakimoto</p>
                 <h3>1月</h3>
-                    <details name="notes" class="details-notes">
+                <div class="details-notes">
+                    <details name="notes">
                         <summary>1/9(Fri) speaker: K.Matsuzaki</summary>
                         <h4>$\{c_n\}$の定義について(笠井先生)</h4>
                         <p>これは意味のあるものなのだろうか．次のような行列(表だと思ってください)を考えよう
@@ -94,7 +95,7 @@
                         <p>例2.32で左辺の$a_n$の級数について，第0項目を計算すると$0^0/0!$が出てくる．分母について$0!=1$であるが，分子はどうだろう．通常，$"0^0=1"$とするのが普通である．その解釈というか説明としては，$\lim_{n \to \infty} x^x = 1$であるとか，$x^y$の極限操作で，どちらを$\to 0$とするかによって結果が変わる．という感じである．
                         </p>
                     </details>
-                    <details name="notes" class="details-notes">
+                    <details name="notes">
                         <summary>1/14(Wed) speaker: K.Seki</summary>
                         <h4>「学校の先生になる人は...」(笠井先生・中川先生)</h4>
                         <p>円を綺麗にかけるようになろう．描き方のコツとしては，肩を固定してそれを中心軸として描くとよい(個人的には息を止めて一気に描くのをお勧めする)．また，$xy$軸も描く場合は，<b>先に円から描く</b>のがコツである．さらに，学校の先生になる人は，定規付きコンパスを買っておくとよい．</p>
@@ -115,13 +116,13 @@
                         <h4>「合成を考えるときに」(笠井先生・中川先生)</h4>
                         <p>写像$f:A \to B, g:B \to C$の合成写像$g \circ f:A \to C$を考えるとき，$f(A) \subset B$を課していた．なぜこんなことを課しているか．$f(A)$の要素として$B$に含まれないような要素に対して，$C$の要素を$g$によって対応させるということはできないからである．このことを関数の具体例で見てみよう．$f(x)=-x^2, x \in \mathbb{R}$と$g(x)=\log x, x \in (0,\infty)$を考える．$f$の値域と$g$の定義域について$(-\infty,0] \not\subset (0,\infty)$であるから，合成関数$g \circ f$は定義できない．</p>
                     </details>
-                    <details name="notes" class="details-notes">
+                    <details name="notes">
                         <summary>1/21(Wed) speaker: M.Fujita</summary>
                         <h4>「全単射であるから...」(中川先生)</h4>
                         <p>$f: A \to B$の逆写像を考えるとき「$f$が全単射であるから，任意の$b \in B$に対して$a \in A$がただ一つ存在して，$b=f(a)$となるから，$f(a)$に$a$を対応させて...」とあるが，少し言葉が足りないだろう．例えば，次のようにするとよい： <br>
                         $f$が全射であるから，任意の$b \in B$に対して，ある$a \in A$が存在して$b=f(a)$となる．$f$が単射であるから，$b=f(a), \forall b \in B$をみたすような$a$がただ一つ存在することが保証される．したがって，$b=f(a)$に対して$a$を対応させた写像$f^{-1}: B \to A$を考えることができる．</p>
                     </details>
-                    <details name="notes" class="details-notes">
+                    <details name="notes">
                         <summary>1/23(Fri) speaker: S.Saitou</summary>
                         <h4>$\lim_{x \to a} xD(x), \; a\neq 0$が存在しないこと</h4>
                         <p>ここはセミナー中に証明したが，いまいちみんなの反応が良くなかったし，そもそも私も少し不安になりながら説明してしまった．セミナー後まとまった回答が書けたので，以下に示しておく：</p>
@@ -139,17 +140,17 @@
                         (2)$a < 0$のとき，$x \in (a-\delta,a)$をとってくると，$x < a < 0$であり，両辺絶対値をとると，$|a| < |x|$となり，$(\ast)$に矛盾する．<br>
                         よって(1),(2)より，$\lim_{x \to a} xD(x)$は存在しない．</p>
                     </details>
-                    <details name="notes" class="details-notes">
+                    <details name="notes">
                         <summary>1/28(Wed)speaker: K.Matsuzaki</summary>
                         <h4>「日本語」(笠井先生)</h4>
                         <p>定義する場面で「hogehogeがなりたつ」と書いた．これは相応しくなく，「hogehogeとは，fugafugaがなりたつときをいう」というふうに書いたほうがよい．</p>
                     </details>
-                    <details name="notes" class="details-notes">
+                    <details name="notes">
                         <summary>1/30(Fri)speaker: N.Hosoda</summary>
                         <h4>「何を示したいのか」(笠井先生)</h4>
                         「$f(x)=xD(x)$が任意の$x=a \neq 0$で連続でない」ということが示したいことである．板書だと，ある$x=a$で示しているのか，それとも任意の$x=a$なのか，判断がしにくい．そういうわけで，何を示したいのかとか，ゴールは何かを明示することは大切なことである．
                     </details>
-                    <details name="notes" class="details-notes">
+                    <details name="notes">
                         <summary>2/4(Wed)speaker: M.Fujita</summary>
                         <h4>「稠密について」(笠井先生・中川先生)</h4>
                         今回は$\mathbb{R}$についての稠密を述べた．$\mathbb{R}$だとどうだろう．$|\cdot|<\varepsilon$の部分が「$\sqrt{(a_1-a_2)^2+(b_1-b_2)^2}<\varepsilon$」のように，距離が$\varepsilon$未満，と変わる．<br>
@@ -172,6 +173,7 @@
                         <h4></h4>
                         <p></p>
                     </details>
+                </div>
         </section>
     </main>
 

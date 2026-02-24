@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>secret page</title>
+
+    <!-- reset CSS -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.css"> -->
+
+    <!-- style.css -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+    <!-- math jax (応用数理解析セミナーから拝借) -->
+    <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+          }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="index.html">B3合同セミナー</a>
+        </h1>
+        <nav>
+            <ul class="header-menu">
+                <li><a href="seminar.html">記録</a></li>
+                <li><a href="math.html">数学</a></li>
+                <li><a href="booklist.html">本紹介</a></li>
+                <li><a href="graduate.html">大学院入試</a></li>
+                <li><a href="latex.html">LaTeX</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="index">
+            <div class="sidemenu"> <!--サイドメニュー-->
+                <p><a href="#restaurant">ご飯屋さん</a></p>
+                <ul>
+                    <li><a href="#nonclassified">未分類</a></li>
+                    <li><a href="#meats">肉類</a></li>
+                    <li><a href="#chinese">中華料理</a></li>
+                    <li><a href="#italian">イタリア料理</a></li>
+                </ul>
+            </div>
+
+            <div class="mainmenu"> <!--メインメニュー-->
+            <section id="restaurant">
+            <h2>ご飯屋さん</h2>
+                <h3 id="nonclassified">未分類</h3>
+                    <!-- <p><a href=""></a></p> --> 
+                    <p><a href="https://maps.app.goo.gl/YbDAPXqeSjwohLJQ9">ビストロミカサ</a>(初回:2026年2月23日)<br>
+                        まず店内の雰囲気はおしゃれで，店主が味のある曲を流してくれた．ジブリに出てきそうな店員(店長)にポークソテーをお勧めされたので，それを頼んだ．とても上品な味がした．ブラックペッパーが効いている．比較対象がおかしいが，近所にあるステーキチェーン店の肉よりは確実に美味しい．しかし大学生にとってポークソテー+ライス=2300円は流石に高いので，こういうところには心とお金に余裕があって，かつ大人と来るのが吉だと思った．</p>
+                <h3 id="meats">肉系</h3>
+                    <p><a href="https://maps.app.goo.gl/YbDAPXqeSjwohLJQ9">福島牛ステーキと肉汁ハンバーグ 文や ＦＵＭＩＹＡ</a><br>
+                ここには感想を書く．</p>
+                    <p><a href="https://maps.app.goo.gl/jtMycrTDXwfQR2GY6">肉バルNicoパティオ</a><br>
+                        ホルモン横丁と親元が一緒らしい．</p>
+                
+                <h3 id="chinese">中華料理</h3>
+                    <p><a href="https://maps.app.goo.gl/HCWbgbMJtdNPPVcy7">鳳来</a>(初回:2023年の夏？)<br></p>
+                        ここは昔やっていた塾講バイトで食事会があったときに初めて行った．そこからうますぎるぞこことなって，それ以来たびたび来ている．基本的にどのメニューもお勧めだが，レバニラ，油淋鶏，豆苗あたりはハズレがなくて美味しい．
+                <h3 id="italian">イタリア料理</h3>
+                    <p><a href="https://maps.app.goo.gl/9GZNk66SAbMhshMu9">オゼンダテ益蔵</a>(初回:2019年くらい?)<br>ゴルゴンゾーラピザが美味しい．単品+お酒で頼むとまあまあお金がかかりそう．コースで頼んだ方がお得と思われる．<!--2021年の12月くらい(高校2年生)に江川さんを誘って行った．あのときは血迷っていた．--></p>
+                <h3>飲み寄り</h3>
+                    <p><a href="https://maps.app.goo.gl/ZUh59XdmJBYcvV7s6">餃子会館</a><br></p>
+            </section>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
